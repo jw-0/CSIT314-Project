@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include "fcgio.h"
+// First round of code from here: http://chriswu.me/blog/writing-hello-world-in-fcgi-with-c-plus-plus/
 
 int main()
 {
