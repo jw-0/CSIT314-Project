@@ -1,0 +1,5 @@
+#!/bin/bash
+set -x
+sudo cp src/csit314.cgi /var/www/cgi-bin/csit314.cgi
+sudo cp index.html /var/www/html/index.html
+sudo service httpd start

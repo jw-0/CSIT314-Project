@@ -2,16 +2,22 @@ CSIT314 Project
 
 Build Instructions:
     
-    * Install NGINX, fcgi-devel and spawn-fcgi
+    * Install httpd and cgicc
 
-    Fedora:
-        $ sudo dnf install nginx fcgi-devel spawn-fcgi
+    Linux:
+        cgicc:
+            $ wget https://ftp.gnu.org/gnu/cgicc/cgicc-3.2.19.tar.gz
+            $ tar xzf cgicc-3.2.19.tar.gz
+            $ cd cgicc-3.2.19
+            $ ./configure
+            $ make
+            $ sudo make install  
 
-    Debian/Ubuntu:
-        $ sudo apt-get install nginx libfcgi-dev spawn-fcgi
+        httpd should be installed by default on your system
+        If not look up your OS's instructions for installing
+        apache2
 
 To Run:
+    $ ./run
     
-    $ ./run.sh
-    
-    You'll need sudo privileges on your machine
+    You'll need super user privileges on your machine

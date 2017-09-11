@@ -1,6 +1,6 @@
 CC = g++
-TARGET = csit314 
-LIBS = -lfcgi++ -lfcgi
+TARGET = csit314.cgi 
+LIBS = -lcgicc
 CFLAGS = -Wall -Wextra -std=c++14 -g
 
 .PHONY: default all clean
