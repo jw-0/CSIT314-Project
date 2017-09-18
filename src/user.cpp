@@ -1,5 +1,6 @@
 #include "user.hpp"
 #include <fstream>
+#include <zlib.h>
 
 std::string getValue(const char *valueName, cgicc::Cgicc formdata)
 {
@@ -25,11 +26,12 @@ void User::createUser(cgicc::Cgicc formdata)
     location = getValue("location", formdata);
 }
 
-// A simple wrapper around displayUser so we don't get confused by the names
-std::ostream &User::saveUser(std::ostream &out)
+void User::saveUser(const char *filename)
 {
-    displayUser(out);
-    return out;
+    gzFile fp;
+    fp =gzopen(filename, "wb");
+    gzwrite(fp, this, sizeof(*this));
+    gzclose(fp);
 }
 
 std::istream &User::loadUser(std::istream &in)

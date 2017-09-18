@@ -8,7 +8,7 @@
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
 #include "user.hpp"
-
+const char *usersDat = "/var/www/cgi-bin/users.dat";
 void outputValue(const char *valueName, cgicc::Cgicc formdata)
 {
     auto iter = formdata.getElement(valueName);
@@ -32,6 +32,7 @@ int main(void)
     std::cout << "<body>\n";
     user.createUser(formdata);
     user.displayUser(std::cout);
+    user.saveUser(usersDat);
     std::cout << "<br/>";
     std::cout << "</body>\n";
     std::cout << "</html\n";

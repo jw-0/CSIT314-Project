@@ -2,4 +2,9 @@
 set -x
 sudo cp src/csit314.cgi /var/www/cgi-bin/csit314.cgi
 sudo cp index.html /var/www/html/index.html
+if [ ! -f /var/www/cgi-bin/users.dat ]; then
+    sudo touch /var/www/cgi-bin/users.dat
+    sudo chmod 666 /var/www/cgi-bin/users.dat
+fi
+
 sudo service httpd start
