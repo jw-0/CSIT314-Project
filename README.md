@@ -18,6 +18,7 @@ Build Instructions:
         apache2
 
 To Run:
+    
     $ ./run
     
     You'll need super user privileges on your machine

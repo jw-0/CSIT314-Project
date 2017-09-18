@@ -7,6 +7,7 @@
 #include <cgicc/Cgicc.h>
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
+#include "user.hpp"
 
 void outputValue(const char *valueName, cgicc::Cgicc formdata)
 {
@@ -21,6 +22,7 @@ void outputValue(const char *valueName, cgicc::Cgicc formdata)
 int main(void)
 {
     cgicc::Cgicc formdata;
+    User user;
     // With cgi when we write to stdout it gets directed into the web page
     std::cout << cgicc::HTTPHTMLHeader() << std::endl; 
     std::cout << "<html>\n";
@@ -28,13 +30,8 @@ int main(void)
     std::cout << "<title> Collected data from form</title>\n";
     std::cout << "</head>\n";
     std::cout << "<body>\n";
-    outputValue("username", formdata);
-    outputValue("firstName", formdata);
-    outputValue("lastName", formdata);
-    outputValue("service", formdata);
-    outputValue("offerDate", formdata);
-    outputValue("endDate", formdata);
-    outputValue("email", formdata);
+    user.createUser(formdata);
+    user.displayUser();
     std::cout << "<br/>";
     std::cout << "</body>\n";
     std::cout << "</html\n";
