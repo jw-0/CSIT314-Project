@@ -16,7 +16,7 @@ class User
     public:
         void createUser(cgicc::Cgicc formdata);
         void saveUser(const char *filename);
-        std::istream &loadUser(std::istream &);
+        void loadUser(const char *filename);
         std::ostream &displayUser(std::ostream &);
     private:
         std::string username;

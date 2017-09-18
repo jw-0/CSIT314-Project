@@ -8,7 +8,7 @@
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
 #include "user.hpp"
-const char *usersDat = "/var/www/cgi-bin/users.dat";
+const char *usersDat = "/var/www/data/users.dat";
 void outputValue(const char *valueName, cgicc::Cgicc formdata)
 {
     auto iter = formdata.getElement(valueName);

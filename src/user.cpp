@@ -34,11 +34,12 @@ void User::saveUser(const char *filename)
     gzclose(fp);
 }
 
-std::istream &User::loadUser(std::istream &in)
+void User::loadUser(const char *filename)
 {
-    in >> username >> firstName >> lastName >> service >> offerDate >> endDate
-       >> email >> location;
-    return in;
+    gzFile fp;
+    fp = gzopen(filename, "rb");
+    gzread(fp, this, sizeof(*this));
+    gzclose(fp);
 }
 
 std::ostream &User::displayUser(std::ostream &out)
