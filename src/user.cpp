@@ -1,4 +1,5 @@
 #include "user.hpp"
+#include <fstream>
 
 std::string getValue(const char *valueName, cgicc::Cgicc formdata)
 {
@@ -24,19 +25,30 @@ void User::createUser(cgicc::Cgicc formdata)
     location = getValue("location", formdata);
 }
 
-void User::saveUser()
+// A simple wrapper around displayUser so we don't get confused by the names
+std::ostream &User::saveUser(std::ostream &out)
 {
+    displayUser(out);
+    return out;
 }
 
-void User::displayUser()
+std::istream &User::loadUser(std::istream &in)
 {
-    std::cout << username << std::endl;
-    std::cout << firstName << std::endl;
-    std::cout << lastName << std::endl;
-    std::cout << service << std::endl;
-    std::cout << offerDate << std::endl;
-    std::cout << endDate << std::endl;
-    std::cout << email << std::endl;
-    std::cout << location << std::endl;
+    in >> username >> firstName >> lastName >> service >> offerDate >> endDate
+       >> email >> location;
+    return in;
+}
+
+std::ostream &User::displayUser(std::ostream &out)
+{
+    out << username << std::endl;
+    out << firstName << std::endl;
+    out << lastName << std::endl;
+    out << service << std::endl;
+    out << offerDate << std::endl;
+    out << endDate << std::endl;
+    out << email << std::endl;
+    out << location << std::endl;
+    return out;
 }
 

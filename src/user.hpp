@@ -1,7 +1,7 @@
 #pragma once
 #include <cgicc/Cgicc.h>
 #include <string>
-
+#include <fstream>
 struct Location
 {
     std::string country;
@@ -15,8 +15,9 @@ class User
 {
     public:
         void createUser(cgicc::Cgicc formdata);
-        void saveUser();
-        void displayUser();
+        std::ostream &saveUser(std::ostream &);
+        std::istream &loadUser(std::istream &);
+        std::ostream &displayUser(std::ostream &);
     private:
         std::string username;
         std::string firstName;

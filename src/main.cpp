@@ -31,7 +31,7 @@ int main(void)
     std::cout << "</head>\n";
     std::cout << "<body>\n";
     user.createUser(formdata);
-    user.displayUser();
+    user.displayUser(std::cout);
     std::cout << "<br/>";
     std::cout << "</body>\n";
     std::cout << "</html\n";
