@@ -1,98 +1,328 @@
-<!-- Home Page -->
-<!-- By Brandon Poetsch -->
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+<title>T1 Services</title>
+<style>
+.sidebar {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 30px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0px 2px;
+  cursor: pointer;
+  width: 150px;
+  font-family: verdana;
+}
+.heading {
+  padding: 10px 0px;
+  font-size: 50px;
+  font-family: verdana;
+  font-weight: bold;
+}
+.formbutton {
+  background-color: white;
+  border: 1px solid #ddd;
+  color: black;
+  padding: 10px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  margin: 10px 10px 0px 0px;
+  cursor: pointer;
+  font-family: verdana;
+}
+.loginbutton {
+  background-color: white;
+  border: 1px solid #ddd;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  margin: 5px 0px 0px 10px;
+  cursor: pointer;
+  font-family: verdana;
+  vertical-align: middle;
+}
+.searchbutton {
+  background-color: white;
+  border: 1px solid #ddd;
+  color: black;
+  padding: 6px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+  font-family: verdana;
+  vertical-align: middle;
+}
 
-		<!-- Title -->
-		<title>T1 Services</title>
-		<link rel="icon" type="image/png" href="logo.png"/>
-		
-		<!-- CSS Link -->
-		<link rel="stylesheet" type="text/css" href="sitestyle.css">
-	</head>
-	
-	<body>
-		<!-- Navigation Bar -->
-		 <table width="100%"><tr>
-			 <td width="5%" class="banner"><a href="#"><img src="logo.png" alt="Logo" width="64" height="64"></a></td>
-  			<form action='' method="get">
-    		<td><input type="text" style="width: 100%" pattern="^[a-zA-Z0-9-]{,30}$" name="" class="searchbar1" placeholder= "⌕ Search for Service..."></td>
-    		<td width="5%" class="banner"><a href="#">Search</a></td>
-  			</form>
-			 <td width="20%" class="banner"><div class="dropdown">
-  				<a>Login/Sign Up</a>
-   					<ul>
-   						<li><input type="text" style="width: 99%" pattern="^[a-zA-Z0-9-]{,30}$" name="" class="login" placeholder="Username"</li>
-   						<li><input type="password" style="width: 99%" pattern="^[a-zA-Z0-9-]{,30}$" name="" class="password" placeholder="Password"></li>
-   						<li><button type="button" onclick="#">Login</button><button type="button" onclick="#">Sign Up</button></li>
-   					</ul>
-				 </div></td>
-			 <td width="15%" class="banner"><a href="#">About Us</a></td>
-			 <td width="5%" class="banner"><a href="#">?</a></td>
-	</tr></table>
- 		
- 		<br><br>
-  		
-  		<!-- Left and Right Tab -->
-  		<div class="content">
-  			<div class="lefthead">Featured Services</div>
-  			<div class="righthead">News Feed</div>
-			<div class="left">
-				<table width="100%" border="1">
-				  <tbody>
-					<tr>
-					  <td width="30%"><center><img src="images/watertap.jpg" width="170" height="120" alt=""/></center></td>
-					  <td><font size="+2"><b>Top Star Plumbing Service</b></font><br>★★★☆☆<br><b>Location: </b>Sydney, NSW<br><b>Price: </b>$100-$500</td>
-					</tr>
-					<tr>
-						<td width="30%"><center><img src="images/comprepair.jpg" width="170" height="120" alt=""/></center></td>
-						<td><font size="+2"><b>Bob's Computer Repair Service</b></font><br>★★★★☆<br><b>Location: </b>Wollongong, NSW<br><b>Price: </b>$50-$200</td>
-					</tr>
-					<tr>
-					  <td width="30%"><center><img src="images/mechanic.jpg" width="170" height="120" alt=""/></center></td>
-					  <td><font size="+2"><b>Old Mate Jeff's Mechanic Service</b></font><br>★★☆☆☆<br><b>Location: </b>Melbourne, VIC<br><b>Price: </b>$500-$5,000</td>
-					</tr>
-				  </tbody>
-				</table>
-			</div>
-			<div class="right">
-			  	<table width="100%" border="1">
-				  <tbody>
-					<tr>
-					  <td width="30%"><font size="+3"><b>System Update #26</b></font><br>7th October 2017<br>T1 Services Admin</td>
-					  <td>Today we look at what we have changed and fixed in our 26th patch. This patch will be deployed tomorrow.<br><br><b>Notes:</b><br><ul><li>Bug Fixes</li><li>UI Changes</li><li>Payments are more secure</li></ul></td>
-					</tr>
-					<tr>
-						<td width="30%"><font size="+3"><b>Security Notice</b></font><br>26th September 2017<br>T1 Services Admin</td>
-					  	<td>A bug has been discovered in our system where users have been receiving messages from spam bots offering users fake services. If you see any services with prices too good to be true, use our implemented reporting system.</td>
-					</tr>
-					<tr>
-						<td width="30%"><font size="+3"><b>System Update #25</b></font><br>25th September 2017<br>T1 Services Admin</td>
-					  	<td>Today we look at what we have changed and fixed in our 25th patch. This patch will be deployed tomorrow.<br><br><b>Notes:</b><br><ul><li>Bug Fixes</li><li>Fixed broken links on some webpages</li><li>Slight tweaking with the navigation bar for more user friendliness</li></ul></td>
-					</tr>
-				  </tbody>
-				</table>
-			</div>	
-  		</div>
-  		
-  		<br><br>
-  		<!-- Footer -->
-  		<div class = "footer">
-  			<table align="center">
-  				<tbody>
-  					<tr>
-  						<td><img src="images/if_Asset_1_2643199.png" width="40" height="40" alt=""/></td>
-					  <td><img src="images/if_Asset_12_2643226.png" width="40" height="40" alt=""/></td>
-					  <td><img src="images/if_Asset_11_2643227.png" width="40" height="40" alt=""/></td>
-  					</tr>
-  				</tbody>
-  			</table><br>
-  			<a>T1 Services Pty. Ltd 2017©, All rights reserved</a>
-  		</div>
+</style>
+</head>
+
+<body>
+
+<!-- 
+
+                                    READ TEXT BELOW ASTRO BOY 
+                    ,
+                   |'.             ,
+                   |  '-._        / )
+                 .'  .._  ',     /_'-,
+                '   /  _'.'_\   /._)')
+               :   /  '_' '_'  /  _.'
+               |E |   |Q| |Q| /   /
+              .'  _\  '-' '-'    /
+            .'--.(S     ,__` )  /
+                  '-.     _.'  /
+                __.--'----(   /
+            _.-'     :   __\ /
+           (      __.' :'  :Y
+            '.   '._,  :   :|
+              '.     ) :.__:|
+                \    \______/
+                 '._L/_H____]
+                  /_        /
+                 /  '-.__.-')
+                :      /   /
+                :     /   /
+              ,/_____/----;
+              '._____)----'
+              /     /   /
+             /     /   /
+           .'     /    \
+      snd (______(-.____)
+      
+     READ THIS FIRST 
+     okay so heres how this page works:
+     - the whole page is one big 2 cell table, 'sidebar' as one cell and the 'main page' as the other 
+     - the buttons on the sidebar control what content is viewed on the main page
+     - the entire WEBSITE is actually ONLY ONE PAGE there are NO HYPERLINKS
+     - all of the changing content is simply 'hiding' and 'showing' there is NO CHANGING PAGES
+     - i literally stayed up to do this all in one night, the code should be all good but keep that in mind
+     
+     NOT COMPLETED YET
+     - proper connection to backend
+     - a way to store logged in users data
+     - input validation
+ -->
+
+<!-- the whole page is one big 2 cell table, sidebar as one cell and all else as the other -->
+<table border="0" width="100%" height="100%"><tr>
+<!-- this is the sidebar -->
+<td width="170px" style="vertical-align: text-top;  text-align: center; border-right: 2px solid;">
+<img src="https://image.ibb.co/mXq4dw/T1.png" alt="T1" border="0">
+<button class="sidebar" onClick="showHome()">Home</button>
+<button class="sidebar" onClick="showLogin()">Login</button>
+<button class="sidebar" onClick="showFindTask()">Find Task</button>
+<button class="sidebar" onClick="showCreateTask()">Create Task</button>
+<button class="sidebar" onClick="showUserProfile()">User Profile</button>
+<button class="sidebar" onClick="showAboutUs()">About Us</button>
+</td><!-- end of the sidebar -->
+
+<!-- this is the start of the main page -->
+<td style="vertical-align: top; text-align: center; padding: 0px 30px;">
+<span class="heading">T1 SERVICES</span>
+
+<!-- This block contains the 'home page' with the featured services -->
+<!-- This block will appear when the Home button is clicked -->
+<div id="homeBlock" style="display: block;">
+  <span style="padding: 0px 20px;"></span>
+  <table border=0 width="100%">
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Featured Tasks</th></tr>
+  </table>
+  
+  <!-- table with featured services -->
+  
+</div>
+
+<!-- This block contains the login and account creation forms -->
+<!-- This block will appear when the Login button is clicked -->
+<div id="loginBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  <form action="/cgi-bin/csit314.cgi" method="post">
+  <table border=0 width="100%">
+  <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Login Information</th></tr>
+  <tr><td><table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Username: &nbsp;</td><td><input type="text" name="userName" style="width:100%"></td></tr>
+  </table><table border=0 width="100%" style="padding:5x 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Password: &nbsp;</td><td><input type="password" name="password" style="width:100%"></td></tr>
+  </table></td><td width="42px"><input type="submit" value="Login" class="loginbutton">
+  </td></tr></table>
+  </form>
+  <form action="/cgi-bin/csit314.cgi" method="post">
+  <table border=0 width="100%">
+  <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Create an Account</th></tr>
+  <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Username:</td><td><input type="text" name="userName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Password:</td><td><input type="password" name="deadline" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Confirm:</td><td><input type="password" name="" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Email:</td><td><input type="text" name="email" style="width:100%"></tr>
+  </table>
+  </td><td style="text-align:left; vertical-align:top; font-family:Calibri; padding: 10px 0px 10px 30px; font-size: 16px;">
+	 <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">First Name:</td><td><input type="text" name="firstName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Last Name:</td><td><input type="text" name="lastName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Phone:</td><td><input type="text" name="phone" style="width:100%"></tr>
+  </table>
+	<input type="submit" value="Create Task" class="formbutton">
+  <input type="reset" value="Clear Form" class="formbutton">
+  </td></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid; padding: 5px"/></tr>
+  </table>
+  </form>
+</div>
+
+<!-- This block contains the task searching and browsing -->
+<!-- This block will appear when the Find Task button is clicked -->
+<div id="findTaskBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  <form action="/cgi-bin/csit314.cgi" method="post">
+  <table border=0 width="100%">
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Tasks</th></tr>
+  <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Keywords: &nbsp;</td>
+  <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
+  <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
+  </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+  </table>
+ 
+  <!-- table with search results -->
+
+</div>
+
+<!-- This block contains the task creation form -->
+<!-- This block will appear when the Create Task button is clicked -->
+<div id="createTaskBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  <form action="/cgi-bin/csit314.cgi" method="post">
+  <table border=0 width="100%">
+  <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Task Information</th></tr>
+  <tr><td colspan=2><table border=0 width="100%">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 16px;">Title: &nbsp;</td><td><input type="text" name="title" style="width:100%"></td></tr>
+  </td></tr></table>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd;"/></tr>
+  <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Task Address:</td><td><input type="text" name="location" style="width:100%"></tr>
+  </table>
+  <div style="padding:10px 0px 0px 0px;">Description of Task:</div><textarea name="description" style="width:100%; height:50px;"></textarea><br/>
+  </td><td style="text-align:left; vertical-align:top; font-family:Calibri; padding: 10px 0px 10px 30px; font-size: 16px;">
+	<table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Offer Price:</td><td><input type="text" name="offeringPrice" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Deadline:</td><td><input type="text" name="deadline" style="width:100%"></tr>
+  </table>
+	<input type="submit" value="Create Task" class="formbutton">
+  <input type="reset" value="Clear Form" class="formbutton">
+  </td></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid; padding: 5px"/></tr>
+  </table>
+  </form>
+</div>
+
+<!-- This block contains the Users information -->
+<!-- This block will appear when the User Profile button is clicked if user is logged in -->
+<div id="userProfileBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  <table border=0 width="100%">
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">User Profile</th></tr>
+  </table>
+  this section still needs to be implemented
+</div>
+
+<!-- This block contains the about us fluff -->
+<!-- This block will appear when the About Us button is clicked -->
+<div id="aboutUsBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  <table border=0 width="100%">
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">About Us</th></tr>
+  <tr><td colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 5px 0px; font-size: 18px;">What is <s>Airtasker?</s> T1 Services?</td></tr>
+  <tr><td colspan=3 style="text-align:left; font-family:Calibri; padding: 5px 0px 20px 0px; font-size: 16px;">There are a range of tasks available on <s>Airtasker</s> T1 Services from tasks around the home like deliveries, cleaning, gardening and handyman work to tasks for businesses like office admin, promotional work or computer & IT support. There also a range of creative tasks like photography, graphic design and website & blog support which can help you earn money online.</td></tr>
+  <tr><td colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 5px 0px; font-size: 18px;">How do I get paid?</td></tr>
+  <tr><td colspan=3 style="text-align:left; font-family:Calibri; padding: 5px 0px 20px 0px; font-size: 16px;">Begin working knowing the funds for the task are being securely held within a <s>Airtasker</s> T1 Services Trust Account until the task is completed. Once the task is completed, the Service Fee (inclusive of all Insurance, Handling and Transaction costs) is deducted and remaining funds are paid directly to your nominated Bank or PayPal account.</td></tr>
+  <tr><td colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 5px 0px; font-size: 18px;">Who will I be working with?</td></tr>
+  <tr><td colspan=3 style="text-align:left; font-family:Calibri; padding: 5px 0px 20px 0px; font-size: 16px;">It's totally up to you! When browsing tasks, you can check out profiles, reviews and recommendations to determine who you'll be working with.</td></tr>
+  <tr><td colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 5px 0px; font-size: 18px;">How much does it cost?</td></tr>
+  <tr><td colspan=3 style="text-align:left; font-family:Calibri; padding: 5px 0px 20px 0px; font-size: 16px;">Once the task has been completed, a 15% Service Fee will be deducted from the agreed offer price to cover all Insurance, Handling and Transaction costs. There are no hidden fees or additional costs.</td></tr>
+  </table>
+  <!-- the above taken from https://www.airtasker.com/about/ in jest -->
+</td></tr></table>
+</div>
+
+<!-- This script controls which blocks are visible -->
+<script>
+function showHome(){
+  document.getElementById("homeBlock").style.display = "block";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "none";
+}
+function showLogin(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "block";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "none";
+}
+function showFindTask(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("findTaskBlock").style.display = "block";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "none";
+}
+function showCreateTask(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "block";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "none";
+}
+function showUserProfile(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "block";
+  document.getElementById("aboutUsBlock").style.display = "none";
+}
+function showAboutUs(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "block";
+}
+</script>
+
 </body>
-
 </html>

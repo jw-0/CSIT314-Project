@@ -3,7 +3,7 @@ set -x
 
 datadir="/var/www/data"
 sudo cp src/csit314.cgi /var/www/cgi-bin/csit314.cgi
-sudo cp index.html /var/www/html/index.html
+sudo cp System/index.html /var/www/html/index.html
 if [ ! -d $datadir ]; then
     sudo mkdir $datadir
     sudo chmod 777 $datadir

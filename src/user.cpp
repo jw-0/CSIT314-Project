@@ -29,8 +29,15 @@ void User::createUser(cgicc::Cgicc formdata)
 void User::saveUser(const char *filename)
 {
     gzFile fp;
+    int check = 0;
+    int errnum = 6;
     fp =gzopen(filename, "wb");
-    gzwrite(fp, this, sizeof(*this));
+    check = gzwrite(fp, this, sizeof(*this));
+    if(check <= 0)
+    {
+        gzerror(fp, &errnum);
+        std::cout << "Error writing to " << filename << " error (" << errnum << ")" << std::endl;
+    }
     gzclose(fp);
 }
 
