@@ -138,6 +138,15 @@
   </table>
   
   <!-- table with featured services -->
+   <table border=0 width="100%">
+ 	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  	  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Title of Task</b></td>
+  	  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 20px;"><b>Price: </b>$0.00</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 13px;"><b>Due: </b>(Enter Due Date Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Address: </b>(Enter Address Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>(Enter Description Here)</td></tr>
+  	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  </table>
   
 </div>
 
@@ -146,50 +155,48 @@
 <div id="loginBlock" style="display: none;">
   <span style="padding: 0px 20px;"></span>
   <form action="/cgi-bin/csit314.cgi" method="post">
-      <table border=0 width="100%">
-      <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
-      <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Login Information</th></tr>
-      <tr><td><table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Username: &nbsp;</td><td><input type="text" name="userName" style="width:100%"></td></tr>
-      </table><table border=0 width="100%" style="padding:5x 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Password: &nbsp;</td><td><input type="password" name="password" style="width:100%"></td></tr>
-      <input type="hidden" name="formType" value="Login">
-      </table></td><td width="42px"><input type="submit" value="Login" class="loginbutton">
-      </td></tr></table>
+  <table border=0 width="100%">
+  <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Login Information</th></tr>
+  <tr><td><table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Username: &nbsp;</td><td><input type="text" name="userName" style="width:100%"></td></tr>
+  </table><table border=0 width="100%" style="padding:5x 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Password: &nbsp;</td><td><input type="password" name="password" style="width:100%"></td></tr>
+  </table></td><td width="42px"><input type="submit" value="Login" class="loginbutton">
+  </td></tr></table>
   </form>
   <form action="/cgi-bin/csit314.cgi" method="post">
-      <table border=0 width="100%">
-      <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
-      <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Create an Account</th></tr>
-      <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Username:</td><td><input type="text" name="userName" style="width:100%"></tr>
-      </table>
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Password:</td><td><input type="password" name="deadline" style="width:100%"></tr>
-      </table>
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Confirm:</td><td><input type="password" name="" style="width:100%"></tr>
-      </table>
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Email:</td><td><input type="text" name="email" style="width:100%"></tr>
-      </table>
-      </td><td style="text-align:left; vertical-align:top; font-family:Calibri; padding: 10px 0px 10px 30px; font-size: 16px;">
-    	 <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">First Name:</td><td><input type="text" name="firstName" style="width:100%"></tr>
-      </table>
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Last Name:</td><td><input type="text" name="lastName" style="width:100%"></tr>
-      </table>
-      <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Phone:</td><td><input type="text" name="phone" style="width:100%"></tr>
-      <input type="hidden" name="formType" value="Create User">
-      </table>
-    	<input type="submit" value="Create User" class="formbutton">
-      <input type="reset" value="Clear Form" class="formbutton">
-      </td></tr>
-      <tr><th colspan=2 style="border-bottom: 1px solid; padding: 5px"/></tr>
-      </table>
+  <table border=0 width="100%">
+  <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Create an Account</th></tr>
+  <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Username:</td><td><input type="text" name="userName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Password:</td><td><input type="password" name="deadline" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Confirm:</td><td><input type="password" name="" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Email:</td><td><input type="text" name="email" style="width:100%"></tr>
+  </table>
+  </td><td style="text-align:left; vertical-align:top; font-family:Calibri; padding: 10px 0px 10px 30px; font-size: 16px;">
+	 <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">First Name:</td><td><input type="text" name="firstName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Last Name:</td><td><input type="text" name="lastName" style="width:100%"></tr>
+  </table>
+  <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Phone:</td><td><input type="text" name="phone" style="width:100%"></tr>
+  </table>
+	<input type="submit" value="Create Task" class="formbutton">
+  <input type="reset" value="Clear Form" class="formbutton">
+  </td></tr>
+  <tr><th colspan=2 style="border-bottom: 1px solid; padding: 5px"/></tr>
+  </table>
   </form>
 </div>
 
@@ -198,26 +205,25 @@
 <div id="findTaskBlock" style="display: none;">
   <span style="padding: 0px 20px;"></span>
   <form action="/cgi-bin/csit314.cgi" method="post">
-      <table border=0 width="100%">
-      <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-      <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Tasks</th></tr>
-      <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Keywords: &nbsp;</td>
-      <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
-      <input type="hidden" name="formType" value="Search">
-      <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
-      </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
-      </table>
-    </form>
+  <table border=0 width="100%">
+	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+	  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Tasks</th></tr>
+	  <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Keywords: &nbsp;</td>
+	  <td style="padding: 15px 0px;"><input type="text" name="keywords" style="width:100%; "></td>
+	  <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
+	  </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+  </table>
+
   <!-- table with search results -->
-<table border=0 width="100%">
-	<tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-  	<tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Title of Task</b></td>
-  	<td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 20px;"><b>Price: </b>$0.00</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 13px;"><b>Due: </b>(Enter Due Date Here)</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Address: </b>(Enter Address Here)</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>(Enter Description Here)</td></tr>
-  	<tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-</table>
+  <table border=0 width="100%">
+ 	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  	  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Title of Task</b></td>
+  	  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 20px;"><b>Price: </b>$0.00</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 13px;"><b>Due: </b>(Enter Due Date Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Address: </b>(Enter Address Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>(Enter Description Here)</td></tr>
+  	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  </table>
 
 </div>
 
@@ -244,7 +250,6 @@
   </table>
   <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
   <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Deadline:</td><td><input type="text" name="deadline" style="width:100%"></tr>
-  <input type="hidden" name="formType" value="Create Task">
   </table>
 	<input type="submit" value="Create Task" class="formbutton">
   <input type="reset" value="Clear Form" class="formbutton">
@@ -262,7 +267,29 @@
   <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
   <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">User Profile</th></tr>
   </table>
-  this section still needs to be implemented
+  
+  <table border=0 width="100%">
+ 	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  	  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 40px;"><b>Username</b></td>
+  	  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 60px;"><b>☆0</b></td></tr>
+  	  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 20px;"><b>Email:</b> (Enter Email Here)</td>
+  	  <td width="40%" style="text-align:left; font-family:Calibri; padding: 5px 30px; font-size: 20px;">0 Reviews</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 20px;"><b>Location:</b> (Enter Location Here)</td>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 20px;"><b>Description:</b> (Enter Description Here)</td>
+  	  <tr><th colspan=3 style="text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 20px;">Services Offering:</th></tr>
+  </table>
+  
+  <!-- table with users services -->
+  <table border=0 width="100%">
+ 	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  	  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Title of Task</b></td>
+  	  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 20px;"><b>Price: </b>$0.00</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 13px;"><b>Due: </b>(Enter Due Date Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Address: </b>(Enter Address Here)</td></tr>
+  	  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>(Enter Description Here)</td></tr>
+  	  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  </table>
+  
 </div>
 
 <!-- This block contains the about us fluff -->
