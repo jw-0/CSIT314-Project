@@ -1,3 +1,4 @@
 #!/bin/bash
 set -x
 sudo service httpd stop
+cp /var/www/data/users.dat mockusers.txt
