@@ -1,5 +1,6 @@
 #include "user.hpp"
 #include <fstream>
+#include <cgicc/HTMLClasses.h>
 #include <zlib.h>
 
 std::string getValue(const char *valueName, cgicc::Cgicc formdata)
@@ -14,51 +15,79 @@ std::string getValue(const char *valueName, cgicc::Cgicc formdata)
     return retval;
 }
 
+User::User()
+{
+    //userCount = 0;
+    id = 0;
+    rating = 0.0;
+}
+
 void User::createUser(cgicc::Cgicc formdata)
 {
     username = getValue("username", formdata);
     firstName = getValue("firstName", formdata);
     lastName = getValue("lastName", formdata);
-    service = getValue("service", formdata);
-    offerDate = getValue("offerDate", formdata);
-    endDate = getValue("endDate", formdata);
     email = getValue("email", formdata);
-    location = getValue("location", formdata);
+    phone = getValue("phone", formdata);
+    password = getValue("password", formdata);
+    ID += 1;
+    id = ID;
+    std::cout << cgicc::body() << "<script> alert(\"User created succesfully!\"); window.history.back();  </script>" << std::endl;
+    //userCount++;
 }
 
-void User::saveUser(const char *filename)
+void User::saveUser(const char *fileName)
 {
-    gzFile fp;
-    int check = 0;
-    int errnum = 6;
-    fp =gzopen(filename, "wb");
-    check = gzwrite(fp, this, sizeof(*this));
-    if(check <= 0)
+    std::ofstream out;
+    out.open(fileName, std::ofstream::out | std::ofstream::app);
+    if(out.is_open())
     {
-        gzerror(fp, &errnum);
-        std::cout << "Error writing to " << filename << " error (" << errnum << ")" << std::endl;
+        out << id << "\t" << username << "\t" << firstName << "\t" << lastName << "\t" << email << "\t" << phone << "\t" << password << std::endl;
+        std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
     }
-    gzclose(fp);
+    else
+        std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
+    out.close();
 }
 
-void User::loadUser(const char *filename)
+std::istream &User::loadUser(std::istream &in)
 {
-    gzFile fp;
-    fp = gzopen(filename, "rb");
-    gzread(fp, this, sizeof(*this));
-    gzclose(fp);
+    in >> id >> username >> firstName >> lastName >> email >> phone >> password;
+    return in;
 }
 
 std::ostream &User::displayUser(std::ostream &out)
 {
-    out << username << std::endl;
-    out << firstName << std::endl;
-    out << lastName << std::endl;
-    out << service << std::endl;
-    out << offerDate << std::endl;
-    out << endDate << std::endl;
-    out << email << std::endl;
-    out << location << std::endl;
+    out << id << "\t" << username << "\t" << firstName << "\t" << lastName << "\t" << email << "\t" << phone << "\t" << password << std::endl;
     return out;
 }
 
+std::istream &operator>>(std::istream &in, User &user)
+{
+    in >> user.id >> user.username >> user.firstName >> user.lastName >> user.email >> user.phone >> user.password;
+    return in;
+}
+
+void loadUsers(std::vector<User> &users, const char *fileName)
+{
+    std::ifstream in;
+    User user;
+    in.open(fileName);
+    int i = 0;
+    if(in.is_open())
+    {
+        while(!in.eof())
+        {
+            in >> user;
+            users.push_back(user);
+            ID = user.getID();
+            i++;
+            if(i > 101)
+                break;
+        }
+        std::cout << "<script> alert(\"Successfully loaded users.dat!\") </script>" << std::endl;
+    }
+    else
+        std::cout << "<script> alert(\"Cannot open " << fileName << "!. Cannot load users into system.\")</script>" << std::endl;
+    in.close();
+}

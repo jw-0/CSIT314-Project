@@ -4,13 +4,6 @@ set -x
 datadir="/var/www/data"
 sudo cp src/csit314.cgi /var/www/cgi-bin/csit314.cgi
 sudo cp System/index.html /var/www/html/index.html
-if [ ! -d $datadir ]; then
-    sudo mkdir $datadir
-    sudo chmod 777 $datadir
-fi
-if [ ! -f $datadir/users.dat ]; then
-    sudo touch $datadir/users.dat
-    sudo chmod 666 $datadir/users.dat
-fi
+sudo cp mockusers.txt $datadir/users.dat
 
 sudo service httpd start

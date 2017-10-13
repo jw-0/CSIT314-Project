@@ -1,7 +1,6 @@
-// Original code based off code found here: https://www.tutorialspoint.com/cplusplus/cpp_web_programming.htm
-// (With heavy original modifications)
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include <string>
 #include <cgicc/CgiDefs.h>
 #include <cgicc/Cgicc.h>
@@ -9,35 +8,89 @@
 #include <cgicc/HTMLClasses.h>
 #include "user.hpp"
 const char *usersDat = "/var/www/data/users.dat";
-void outputValue(const char *valueName, cgicc::Cgicc formdata)
+
+// Checks the type of form, and changes what we do with the data accordingly
+auto checkFormType(cgicc::Cgicc formdata)
 {
+    std::string form = "null";
+    const char* valueName = "formType";
     auto iter = formdata.getElement(valueName);
-    std::cout << "<br/>\n";
+    
     if(!iter->isEmpty() && iter != (*formdata).end())
-        std::cout << valueName << ": " << **iter << std::endl;
-    else
-        std::cout << "No data entered (" << valueName << ")" << std::endl;
+        form = **iter;
+    return form;
+}
+
+// traverse the users vector, check our username and password, create a cookie if successful.
+void login(cgicc::Cgicc formdata, std::vector<User> &users)
+{
+    loadUsers(users, usersDat);
+    std::string userName = getValue("username", formdata);
+    std::string password = getValue("password", formdata);
+    for(auto iter = users.begin(); iter != users.end(); ++iter)
+    {
+        if(iter->getUsername() == userName && iter->getPassword() == password)
+        {
+            std::cout << "<script> alert(\"Login was successful!\") </script>" << std::endl;
+            std::cout << cgicc::HTTPHTMLHeader().setCookie(cgicc::HTTPCookie("Login", userName));
+        }
+    }
 }
 
 int main(void)
 {
     cgicc::Cgicc formdata;
-    User user;
-    // With cgi when we write to stdout it gets directed into the web page
-    std::cout << cgicc::HTTPHTMLHeader() << std::endl; 
-    std::cout << "<html>\n";
-    std::cout << "<head>\n";
-    std::cout << "<title> Collected data from form</title>\n";
-    std::cout << "</head>\n";
-    std::cout << "<body>\n";
-    user.createUser(formdata);
-    user.displayUser(std::cout);
-    user.saveUser(usersDat);
-    std::cout << "<br/>";
-    std::cout << "</body>\n";
-    std::cout << "</html\n";
-
-     return 0;
-}
     
+    std::vector<User> users;
+    //std::vector<Task> tasks;
+    std::cout << cgicc::HTTPHTMLHeader() << std::endl;
+    std::string form;
+    form = checkFormType(formdata);
+    if(form.compare("null") == 0)
+    {
+        std::cout << "<script> alert(\"This shouldn't ever happen...\");window.history.back();</script>" << std::endl;
+    }
+    else if(form.compare("Create User") == 0)
+    {
+        User user;
+        user.createUser(formdata);
+        user.saveUser(usersDat);
+        users.push_back(user);
+    }
+    else if(form.compare("Create Task") == 0)
+    {
+        std::cout << "<script> alert(\"Create task yet to be implemented...\");window.history.back();</script>" << std::endl;
+        //createTask(formdata);
+    }
+    else if(form.compare("Login") == 0)
+    {
+        std::cout << "<script> alert(\"Login yet to be implemented...\");window.history.back();</script>" << std::endl;
+        // login(formdata, users);
+    }
+    else if(form.compare("Search") == 0)
+    {
+        std::cout << "<script> alert(\"Search yet to be implemented...\");window.history.back();</script>" << std::endl;
+        //search(formdata);
+    }
+    return 0;
+}
 
+
+/*
+Structure:
+
+    Data gets posted into script
+                |
+                v
+    We then check the data posted to see what function we should call:
+        if(formdada.getElement(form) == "Create User")
+        {
+            createUser(formdata);
+        }
+        else if(formdata.getElement(form) == "Create Task")
+            ...
+        else if(formdata.getElement(form) == "Login")
+            ...
+        else if(formdata.getElement(form) == "Search")
+            ...
+*/

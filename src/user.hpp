@@ -2,30 +2,37 @@
 #include <cgicc/Cgicc.h>
 #include <string>
 #include <fstream>
-struct Location
-{
-    std::string country;
-    std::string state;
-    std::string city;
-};
+#include <vector>
 
 std::string getValue(const char *valueName, cgicc::Cgicc formdata);
+
+static int ID = 0;
 
 class User
 {
     public:
+        User();
         void createUser(cgicc::Cgicc formdata);
-        void saveUser(const char *filename);
-        void loadUser(const char *filename);
+        std::istream &loadUser(std::istream &);
+        void saveUser(const char *);
         std::ostream &displayUser(std::ostream &);
+        friend std::istream &operator>>(std::istream &, User &);
+        int getID() { return id; }
+        std::string getUsername() { return username; }
+        std::string getPassword() { return password; }
+        std::string getFirstName() { return firstName; }
+        std::string getLastName() { return lastName; }
+        std::string getEmail() { return email; }
+        std::string getPhone() { return phone; }
     private:
+        int id;
         std::string username;
         std::string firstName;
         std::string lastName;
-        std::string service;
-        std::string offerDate;
-        std::string endDate;
         std::string email;
-        std::string location; // TODO: Change to Location struct when input forms are more mature 
-
+        std::string phone;
+        std::string password;
+        float rating;
 };
+
+void loadUsers(std::vector<User> &, const char *);
