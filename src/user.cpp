@@ -1,7 +1,6 @@
 #include "user.hpp"
 #include <fstream>
 #include <cgicc/HTMLClasses.h>
-#include <zlib.h>
 
 std::string getValue(const char *valueName, cgicc::Cgicc formdata)
 {
