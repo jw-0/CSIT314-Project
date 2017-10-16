@@ -8,14 +8,14 @@
 8	twoofinden7	Tamar	Woofinden	twoofinden7@answers.com	696-335-9263	cw6ippgGUn
 9	jdraycott8	James	Draycott	jdraycott8@java.com	385-237-6362	UDLarWzzkbt
 10	ahardiman9	Abram	Hardiman	ahardiman9@si.edu	588-254-8234	dLbrMFi9T6ms
-11	gderyebarretta	Gris	De Rye Barrett	gderyebarretta@ow.ly	781-957-6794	Kx4kH39C
+11	gderyebarretta	Gris	DeRyeBarrett	gderyebarretta@ow.ly	781-957-6794	Kx4kH39C
 12	istigerb	Issi	Stiger	istigerb@deviantart.com	259-500-4706	e7tlat
 13	nocklinc	Nikkie	Ocklin	nocklinc@alexa.com	734-910-2465	AIR7DP
 14	tbutchardd	Tades	Butchard	tbutchardd@gnu.org	342-355-9923	lCms8Im00xp
 15	ehaggerstone	Eda	Haggerston	ehaggerstone@pinterest.com	810-178-8353	lroyAZF
 16	mbarehamf	Massimo	Bareham	mbarehamf@ehow.com	719-575-8783	L953USu
 17	adumbareg	Abraham	Dumbare	adumbareg@shutterfly.com	192-677-9307	ABx2Gt3VdFXU
-18	odiangeloh	Odille	Di Angelo	odiangeloh@angelfire.com	345-156-2572	XE8nypjWpCX
+18	odiangeloh	Odille	DiAngelo	odiangeloh@angelfire.com	345-156-2572	XE8nypjWpCX
 19	nhollingsheadi	Natividad	Hollingshead	nhollingsheadi@symantec.com	724-472-0402	Fy1VRgRAca
 20	mmallisonj	Maximo	Mallison	mmallisonj@t.co	853-940-3463	bI27O4
 21	aboocockk	Aviva	Boocock	aboocockk@blinklist.com	381-616-7410	mXnV9GvkjAx
@@ -72,7 +72,7 @@
 72	cwoolpert1z	Corbie	Woolpert	cwoolpert1z@state.tx.us	491-111-6897	nDbTl7LD
 73	aladloe20	Aluino	Ladloe	aladloe20@hugedomains.com	227-115-7305	h1LylrkDfpM
 74	mfairney21	Maurita	Fairney	mfairney21@apple.com	442-456-5155	axCCftPvf
-75	nstjohn22	Nahum	St. John	nstjohn22@webmd.com	556-896-5170	NC07GLyCUB
+75	nstjohn22	Nahum	St.John	nstjohn22@webmd.com	556-896-5170	NC07GLyCUB
 76	ptrevna23	Pansie	Trevna	ptrevna23@umich.edu	605-956-1551	2qLiGs4JGDe
 77	tdelbergue24	Torrey	Delbergue	tdelbergue24@google.com	500-936-8869	nVJSBXZo6p
 78	mcasement25	Mason	Casement	mcasement25@weebly.com	621-333-7469	P5MRj8mjP

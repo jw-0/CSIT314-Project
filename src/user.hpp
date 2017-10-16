@@ -15,8 +15,10 @@ class User
         void createUser(cgicc::Cgicc formdata);
         std::istream &loadUser(std::istream &);
         void saveUser(const char *);
-        std::ostream &displayUser(std::ostream &);
         friend std::istream &operator>>(std::istream &, User &);
+        friend std::ostream &operator<<(std::ostream &, const User &);
+        friend bool operator==(const User &lhs, const User &rhs);
+        // simple getters
         int getID() { return id; }
         std::string getUsername() { return username; }
         std::string getPassword() { return password; }

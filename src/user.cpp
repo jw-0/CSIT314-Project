@@ -31,17 +31,16 @@ void User::createUser(cgicc::Cgicc formdata)
     password = getValue("password", formdata);
     ID += 1;
     id = ID;
-    std::cout << cgicc::body() << "<script> alert(\"User created succesfully!\"); window.history.back();  </script>" << std::endl;
     //userCount++;
 }
 
 void User::saveUser(const char *fileName)
 {
     std::ofstream out;
-    out.open(fileName, std::ofstream::out | std::ofstream::app);
+    out.open(fileName, std::ofstream::app);
     if(out.is_open())
     {
-        out << id << "\t" << username << "\t" << firstName << "\t" << lastName << "\t" << email << "\t" << phone << "\t" << password << std::endl;
+        out << *this;
         std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
     }
     else
@@ -55,10 +54,17 @@ std::istream &User::loadUser(std::istream &in)
     return in;
 }
 
-std::ostream &User::displayUser(std::ostream &out)
+bool operator==(const User &lhs, const User &rhs)
 {
-    out << id << "\t" << username << "\t" << firstName << "\t" << lastName << "\t" << email << "\t" << phone << "\t" << password << std::endl;
-    return out;
+    if(lhs.id == rhs.id && 
+       lhs.username == rhs.username &&
+       lhs.firstName == rhs.firstName &&
+       lhs.lastName == rhs.lastName &&
+       lhs.email == rhs.email &&
+       lhs.phone == rhs.phone &&
+       lhs.password == rhs.password)
+        return true;
+    return false;
 }
 
 std::istream &operator>>(std::istream &in, User &user)
@@ -67,26 +73,37 @@ std::istream &operator>>(std::istream &in, User &user)
     return in;
 }
 
+std::ostream &operator<<(std::ostream &out, const User &user)
+{
+    out << user.id << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password;
+    return out;
+}
+
+
 void loadUsers(std::vector<User> &users, const char *fileName)
 {
     std::ifstream in;
     User user;
     in.open(fileName);
-    int i = 0;
     if(in.is_open())
     {
-        while(!in.eof())
+        for(int i = 0; !in.eof(); i++)
         {
             in >> user;
             users.push_back(user);
             ID = user.getID();
-            i++;
-            if(i > 101)
-                break;
         }
-        std::cout << "<script> alert(\"Successfully loaded users.dat!\") </script>" << std::endl;
+        std::cout << "<script> alert(\"Successfully loaded users.dat!\"); </script>" << std::endl;
+        // sometimes we get duplicates, remove them
+        if(users[users.size()-1] == users[users.size()-2])
+            users.pop_back();
     }
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!. Cannot load users into system.\")</script>" << std::endl;
     in.close();
+    if(in.is_open())
+    {
+        std::cout << "<script> alert(\"" << fileName << " did not close properly. Trying again...\")</script>" << std::endl;
+        in.close();
+    }
 }
