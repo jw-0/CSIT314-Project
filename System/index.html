@@ -150,7 +150,7 @@
       <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
       <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Login Information</th></tr>
       <tr><td><table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Username: &nbsp;</td><td><input type="text" name="userName" style="width:100%"></td></tr>
+      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Username: &nbsp;</td><td><input type="text" name="username" style="width:100%"></td></tr>
       </table><table border=0 width="100%" style="padding:5x 0px 0px 0px;">
       <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Password: &nbsp;</td><td><input type="password" name="password" style="width:100%"></td></tr>
       <input type="hidden" name="formType" value="Login">
@@ -163,10 +163,10 @@
       <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Create an Account</th></tr>
       <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
       <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Username:</td><td><input type="text" name="userName" style="width:100%"></tr>
+      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Username:</td><td><input type="text" name="username" style="width:100%"></tr>
       </table>
       <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Password:</td><td><input type="password" name="deadline" style="width:100%"></tr>
+      <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Password:</td><td><input type="password" name="password" style="width:100%"></tr>
       </table>
       <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
       <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Confirm:</td><td><input type="password" name="" style="width:100%"></tr>
@@ -235,7 +235,7 @@
   <tr><th colspan=2 style="border-bottom: 1px solid #ddd;"/></tr>
   <tr><td style="text-align:left; font-family:Calibri; padding: 10px 0px 10px 0px; font-size: 14px;">
   <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
-  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Task Address:</td><td><input type="text" name="location" style="width:100%"></tr>
+  <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Task Location:</td><td><input type="text" name="location" style="width:100%"></tr>
   </table>
   <div style="padding:10px 0px 0px 0px;">Description of Task:</div><textarea name="description" style="width:100%; height:50px;"></textarea><br/>
   </td><td style="text-align:left; vertical-align:top; font-family:Calibri; padding: 10px 0px 10px 30px; font-size: 16px;">
@@ -245,6 +245,7 @@
   <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
   <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Deadline:</td><td><input type="text" name="deadline" style="width:100%"></tr>
   <input type="hidden" name="formType" value="Create Task">
+  <input id="userid" type="hidden" name="userid" value="999">
   </table>
 	<input type="submit" value="Create Task" class="formbutton">
   <input type="reset" value="Clear Form" class="formbutton">
@@ -287,6 +288,23 @@
 
 <!-- This script controls which blocks are visible -->
 <script>
+// Taken from here: https://www.w3schools.com/js/js_cookies.asp
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function showHome(){
   document.getElementById("homeBlock").style.display = "block";
   document.getElementById("loginBlock").style.display = "none";
@@ -312,12 +330,19 @@ function showFindTask(){
   document.getElementById("aboutUsBlock").style.display = "none";
 }
 function showCreateTask(){
-  document.getElementById("homeBlock").style.display = "none";
-  document.getElementById("loginBlock").style.display = "none";
-  document.getElementById("findTaskBlock").style.display = "none";
-  document.getElementById("createTaskBlock").style.display = "block";
-  document.getElementById("userProfileBlock").style.display = "none";
-  document.getElementById("aboutUsBlock").style.display = "none";
+  var username = getCookie("username");
+  if(username != "")
+  {
+    document.getElementById("homeBlock").style.display = "none";
+    document.getElementById("loginBlock").style.display = "none";
+    document.getElementById("findTaskBlock").style.display = "none";
+    document.getElementById("createTaskBlock").style.display = "block";
+    document.getElementById("userProfileBlock").style.display = "none";
+    document.getElementById("aboutUsBlock").style.display = "none";
+    document.getElementById("userid").value = getCookie("userID");
+  }
+  else
+    alert("You must be logged in to create a task.");
 }
 function showUserProfile(){
   document.getElementById("homeBlock").style.display = "none";
@@ -335,6 +360,16 @@ function showAboutUs(){
   document.getElementById("userProfileBlock").style.display = "none";
   document.getElementById("aboutUsBlock").style.display = "block";
 }
+/*
+function showUser(){
+  var username = getCookie("username");
+  var node = document.getElementById('username');
+  if(username != "")
+    node.innerHTML("<p> Welcome back, " + username "</p>");
+  else
+    node.innerHTML("<p> Not currently logged in </p>");
+}*/
+
 </script>
 
 </body>

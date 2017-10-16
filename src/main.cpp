@@ -7,7 +7,11 @@
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
 #include "user.hpp"
+#include "task.hpp"
+#include "util.hpp"
+
 const char *usersDat = "/var/www/data/users.dat";
+const char *tasksDat = "/var/www/data/tasks.dat";
 
 void goBack()
 {
@@ -29,17 +33,26 @@ auto checkFormType(cgicc::Cgicc formdata)
 // traverse the users vector, check our username and password, create a cookie if successful.
 void login(cgicc::Cgicc formdata, std::vector<User> &users)
 {
-    //loadUsers(users, usersDat);
+    bool success = false;
     std::string userName = getValue("username", formdata);
     std::string password = getValue("password", formdata);
     for(auto iter = users.begin(); iter != users.end(); ++iter)
     {
         if(iter->getUsername() == userName && iter->getPassword() == password)
         {
-            std::cout << "<script> alert(\"Login was successful!\"); window.history.back(); </script>" << std::endl;
-            std::cout << cgicc::HTTPHTMLHeader().setCookie(cgicc::HTTPCookie("username", userName));
+            success = true;
+            std::string id = std::to_string(iter->getID());
+            std::cout << "<script> alert(\"Login was successful!\"); </script>" << std::endl;
+            // document.cookie = "username" + "=" + username;
+            // document.cookie = "userID" + "=" + id;
+            goBack();
+            std::cout << "<script> document.cookie = \"username\" + \"=\" + \"" << userName << "; path=/;\"; </script>";
+            std::cout << "<script> document.cookie = \"userID\" + \"=\" + \"" << id << "; path=/;\";</script>";
         }
     }
+    if(!success)
+        std::cout << "<script> alert(\"Failed to login. Check your credentials and try again\");</script>"<<std::endl;
+
 }
 
 int main(void)
@@ -47,16 +60,13 @@ int main(void)
     cgicc::Cgicc formdata;
     
     std::vector<User> users;
-    //std::vector<Task> tasks;
+    std::vector<Task> tasks;
     std::cout << cgicc::HTTPHTMLHeader() << std::endl;
     std::string form;
     form = checkFormType(formdata);
     loadUsers(users, usersDat);
-    if(form.compare("null") == 0)
-    {
-        std::cout << "<script> alert(\"This shouldn't ever happen...\");window.history.back();</script>" << std::endl;
-    }
-    else if(form.compare("Create User") == 0)
+    loadTasks(tasks, tasksDat);
+    if(form.compare("Create User") == 0)
     {
         User user;
         user.createUser(formdata);
@@ -65,17 +75,18 @@ int main(void)
     }
     else if(form.compare("Create Task") == 0)
     {
-        std::cout << "<script> alert(\"Create task yet to be implemented...\");window.history.back();</script>" << std::endl;
-        //createTask(formdata);
+        Task task;
+        task.createTask(formdata);
+        task.saveTask(tasksDat);
+        tasks.push_back(task);
     }
     else if(form.compare("Login") == 0)
     {
-        //std::cout << "<script> alert(\"Login yet to be implemented...\");window.history.back();</script>" << std::endl;
         login(formdata, users);
     }
     else if(form.compare("Search") == 0)
     {
-        std::cout << "<script> alert(\"Search yet to be implemented...\");window.history.back();</script>" << std::endl;
+        std::cout << "<script> alert(\"Search yet to be implemented...\");</script>" << std::endl;
         //search(formdata);
     }
     goBack();

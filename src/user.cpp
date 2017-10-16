@@ -1,22 +1,11 @@
 #include "user.hpp"
 #include <fstream>
 #include <cgicc/HTMLClasses.h>
+#include "util.hpp"
 
-std::string getValue(const char *valueName, cgicc::Cgicc formdata)
-{
-    auto iter = formdata.getElement(valueName);
-    std::string retval;
-    if(!iter->isEmpty() && iter != (*formdata).end())
-        retval = **iter;
-    else
-        retval = "null";
-
-    return retval;
-}
 
 User::User()
 {
-    //userCount = 0;
     id = 0;
     rating = 0.0;
 }
@@ -31,7 +20,6 @@ void User::createUser(cgicc::Cgicc formdata)
     password = getValue("password", formdata);
     ID += 1;
     id = ID;
-    //userCount++;
 }
 
 void User::saveUser(const char *fileName)
@@ -46,12 +34,6 @@ void User::saveUser(const char *fileName)
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
     out.close();
-}
-
-std::istream &User::loadUser(std::istream &in)
-{
-    in >> id >> username >> firstName >> lastName >> email >> phone >> password;
-    return in;
 }
 
 bool operator==(const User &lhs, const User &rhs)
@@ -75,7 +57,7 @@ std::istream &operator>>(std::istream &in, User &user)
 
 std::ostream &operator<<(std::ostream &out, const User &user)
 {
-    out << user.id << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password;
+    out << user.id << "\t" << user.username << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password << std::endl;;
     return out;
 }
 
