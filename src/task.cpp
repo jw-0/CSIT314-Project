@@ -34,7 +34,7 @@ void Task::saveTask(const char *fileName)
     if(out.is_open())
     {
         out << *this;
-        std::cout << "<script> alert(\" Successfully wrote task!\"); </script>" << std::endl;
+        //std::cout << "<script> alert(\" Successfully wrote task!\"); </script>" << std::endl;
     }
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
@@ -85,7 +85,7 @@ void loadTasks(std::vector<Task> &tasks, const char *fileName)
             in >> task;
             tasks.push_back(task);
         }
-        std::cout << "<script> alert(\"Successfully loaded tasks.dat!\"); </script>" << std::endl;
+        //std::cout << "<script> alert(\"Successfully loaded tasks.dat!\"); </script>" << std::endl;
         // sometimes we get duplicates, remove them
         if(tasks[tasks.size()-1] == tasks[tasks.size()-2])
             tasks.pop_back();

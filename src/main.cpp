@@ -42,10 +42,9 @@ void login(cgicc::Cgicc formdata, std::vector<User> &users)
         {
             success = true;
             std::string id = std::to_string(iter->getID());
-            std::cout << "<script> alert(\"Login was successful!\"); </script>" << std::endl;
+            //std::cout << "<script> alert(\"Login was successful!\"); </script>" << std::endl;
             // document.cookie = "username" + "=" + username;
             // document.cookie = "userID" + "=" + id;
-            goBack();
             std::cout << "<script> document.cookie = \"username\" + \"=\" + \"" << userName << "; path=/;\"; </script>";
             std::cout << "<script> document.cookie = \"userID\" + \"=\" + \"" << id << "; path=/;\";</script>";
         }

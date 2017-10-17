@@ -29,7 +29,7 @@ void User::saveUser(const char *fileName)
     if(out.is_open())
     {
         out << *this;
-        std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
+        //std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
     }
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
@@ -75,7 +75,7 @@ void loadUsers(std::vector<User> &users, const char *fileName)
             users.push_back(user);
             ID = user.getID();
         }
-        std::cout << "<script> alert(\"Successfully loaded users.dat!\"); </script>" << std::endl;
+        //std::cout << "<script> alert(\"Successfully loaded users.dat!\"); </script>" << std::endl;
         // sometimes we get duplicates, remove them
         if(users[users.size()-1] == users[users.size()-2])
             users.pop_back();

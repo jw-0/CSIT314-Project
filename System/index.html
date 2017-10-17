@@ -64,7 +64,7 @@
 </style>
 </head>
 
-<body>
+<body onload="showLoginInfo()">
 
 <!-- 
 
@@ -122,11 +122,14 @@
 <button class="sidebar" onClick="showCreateTask()">Create Task</button>
 <button class="sidebar" onClick="showUserProfile()">User Profile</button>
 <button class="sidebar" onClick="showAboutUs()">About Us</button>
+<button class="sidebar" onClick="logout()">Logout</button>
 </td><!-- end of the sidebar -->
 
 <!-- this is the start of the main page -->
 <td style="vertical-align: top; text-align: center; padding: 0px 30px;">
 <span class="heading">T1 SERVICES</span>
+<span id= "loggedIn"></span>
+<span id= 'LoginInfo'></span>
 
 <!-- This block contains the 'home page' with the featured services -->
 <!-- This block will appear when the Home button is clicked -->
@@ -154,7 +157,7 @@
       </table><table border=0 width="100%" style="padding:5x 0px 0px 0px;">
       <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 16px;">Password: &nbsp;</td><td><input type="password" name="password" style="width:100%"></td></tr>
       <input type="hidden" name="formType" value="Login">
-      </table></td><td width="42px"><input type="submit" value="Login" class="loginbutton">
+      </table></td><td width="42px"><input type="submit" onClick="showLogin()" value="Login" class="loginbutton">
       </td></tr></table>
   </form>
   <form action="/cgi-bin/csit314.cgi" method="post">
@@ -369,7 +372,25 @@ function showUser(){
   else
     node.innerHTML("<p> Not currently logged in </p>");
 }*/
+// username userID
 
+
+  function showLoginInfo(){
+    var username = getCookie("username");
+    if(username != "")
+    {
+      document.getElementById("loggedIn").innerHTML = "Logged in as ";
+      document.getElementById("LoginInfo").innerHTML = getCookie("username");
+    }
+    else
+      document.getElementById("loggedIn").innerHTML = "Not currently logged in.";
+  }
+
+  function logout(){
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    location.reload();
+  }
 </script>
 
 </body>

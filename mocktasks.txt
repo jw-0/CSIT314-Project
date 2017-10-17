@@ -98,3 +98,5 @@
 98	Harber-Kerluke-and-Kuhlman	345.07	21/9/2017	America/Lima	http://dummyimage.com/227x233.bmp/cc0000/ffffff	Open-source	3	98	true
 99	Johns-LLC	175.6	23/7/2017	Asia/Chongqing	http://dummyimage.com/116x232.jpg/5fa2dd/ffffff	encompassing	3	99	true
 100	Wintheiser-Ledner-and-Wisoky	245.46	28/9/2017	Europe/Sarajevo	http://dummyimage.com/224x138.bmp/cc0000/ffffff	Monitored	2	100	true
+1	TaskTest	70	10/01/1980	Sydney	http://dummysite.com/img	fegsdg	23	true
+1	TaskFour	987.65	01/01/2018	Canberra	http://dummysite.com/img	ergfdg9	52	true
