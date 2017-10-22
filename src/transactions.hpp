@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #pragma once
 #include <iostream>
 #include <vector>

@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #include <iostream>
 #include <fstream>
 #include <cgicc/CgiDefs.h>
@@ -22,7 +23,9 @@ void Task::createTask(cgicc::Cgicc formdata)
     ownerID = getValue("userid", formdata);
     imgLink = "http://dummysite.com/img";
     flagLevel = "1";
+    rating = 5.0;
     active = true;
+    alert("Successfully created task!");
 }
 
 std::istream &Task::loadTask(std::istream &in)
@@ -50,7 +53,7 @@ void Task::saveTask(const char *fileName)
 std::istream &operator>>(std::istream &in, Task &task)
 {
     std::string boolVal;
-    in >> task.serviceNum >> task.title >> task.offerPrice >> task.deadline >> task.location >> task.imgLink >> task.description >> task.flagLevel >> task.ownerID >> boolVal;
+    in >> task.serviceNum >> task.title >> task.offerPrice >> task.deadline >> task.location >> task.imgLink >> task.description >> task.flagLevel >> task.ownerID >> boolVal >> task.rating;
     ServiceNum = std::stoi(task.serviceNum, nullptr, 0);
     if(boolVal.compare("true") == 0)
         task.active = true;
@@ -66,7 +69,7 @@ std::ostream &operator<<(std::ostream &out, const Task &task)
         boolVal = "true";
     else
         boolVal = "false";
-    out << task.serviceNum << "\t" << task.title << "\t" << task.offerPrice << "\t" << task.deadline << "\t" << task.location << "\t" << task.imgLink << "\t" << task.description << "\t" << task.flagLevel << "\t" << task.ownerID << "\t" << boolVal << std::endl;
+    out << task.serviceNum << "\t" << task.title << "\t" << task.offerPrice << "\t" << task.deadline << "\t" << task.location << "\t" << task.imgLink << "\t" << task.description << "\t" << task.flagLevel << "\t" << task.ownerID << "\t" << boolVal << "\t" << task.rating<< std::endl;
     return out;
 }
 
@@ -92,6 +95,7 @@ Task Task::operator=(const Task &rhs)
     location = rhs.location;
     description = rhs.description;
     ownerID = rhs.ownerID;
+    rating = rhs.rating;
     return *this;
 }
 

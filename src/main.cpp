@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -19,18 +20,20 @@ const char *tasksDat = "/var/www/data/tasks.dat";
 const char *transDat = "/var/www/data/trans.dat";
 const char *tempFile = "/var/www/data/temp";
 
-std::string headerStr = "<table border=0 width=\"100%\"><tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr>\n";
-std::string titleStr = "<tr><td width=\"60%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Title: </b> </td></tr>\n";
-std::string priceStr = "<td width=\"40%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Price: $</b> </td></tr>\n";
-std::string dueStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;\"><b>Due: </b> </td></tr>\n";
-std::string locStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Location: </b> </td></tr>\n";
-std::string descStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Description: </b> </td></tr>\n";
-std::string userStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Offering User: </b> </td></tr>\n";
-std::string bottomStr = "<tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr></table>";
-std::string backButton = "<button onclick=window.history.back()> Go Back </button>";
-std::string buyButton1 = "<form action=\"/cgi-bin/csit314.cgi\" method=\"post\"><input id=\"purchase\" type=\"hidden\" name=\"purchase\" value=\"purchase\"><input id=\"offererID\" type=\"hidden\" name=\"offererID\" value=\"\">";
-std::string buyButton2 = "<input id=\"serviceNum\" type=\"hidden\" name=\"serviceNum\" value=\"\">";
-std::string buyButton3 = "<input id=\"responderID\" type=\"hidden\" name =\"responderID\" value=\"\"><input type=\"submit\" value=\"Purchase\"></form>";
+static std::string headerStr = "<table border=0 width=\"100%\"><tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr>\n";
+static std::string titleStr = "<tr><td width=\"60%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Title: </b> </td></tr>\n";
+static std::string priceStr = "<td width=\"40%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Price: $</b> </td></tr>\n";
+static std::string dueStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;\"><b>Due: </b> </td></tr>\n";
+static std::string locStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Location: </b> </td></tr>\n";
+static std::string descStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Description: </b> </td></tr>\n";
+static std::string userStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Offering User: </b> </td></tr>\n";
+static std::string tRateStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Task Rating: </b> </td></tr>\n";
+static std::string uRateStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>User Rating: </b> </td></tr>\n";
+static std::string bottomStr = "<tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr></table>";
+static std::string backButton = "<button onclick=window.history.back()> Go Back </button>";
+static std::string buyButton1 = "<form action=\"/cgi-bin/csit314.cgi\" method=\"post\"><input id=\"purchase\" type=\"hidden\" name=\"purchase\" value=\"purchase\"><input id=\"offererID\" type=\"hidden\" name=\"offererID\" value=\"\">";
+static std::string buyButton2 = "<input id=\"serviceNum\" type=\"hidden\" name=\"serviceNum\" value=\"\">";
+static std::string buyButton3 = "<input id=\"responderID\" type=\"hidden\" name =\"responderID\" value=\"\"><input type=\"submit\" value=\"Purchase\"></form>";
 
 void goBack()
 {
@@ -47,6 +50,17 @@ auto checkFormType(cgicc::Cgicc formdata)
     if(!iter->isEmpty() && iter != (*formdata).end())
         form = **iter;
     return form;
+}
+
+
+float getUserRatingByID(long id, std::vector<User> users)
+{
+    for(auto iter = users.begin(); iter != users.end(); ++iter)
+    {
+        if(id == iter->getID())
+            return iter->getRating();
+    }
+    return 5.0;
 }
 
 std::string getUserByID(long id, std::vector<User> users)
@@ -135,11 +149,13 @@ void search(cgicc::Cgicc formdata, std::vector<Task> tasks, std::vector<User> us
             locStr.insert(120, iter->getLocation());
             descStr.insert(123, iter->getDescription());
             userStr.insert(125, getUserByID(std::stoi(iter->getOwnerID(), nullptr, 0), users));
+            tRateStr.insert(124, std::to_string(iter->getRating()));
+            uRateStr.insert(124, std::to_string(getUserRatingByID(std::stoi(iter->getOwnerID(), nullptr, 0), users)));
             buyButton1.insert(178, iter->getOwnerID());
             buyButton2.insert(62, iter->getServiceNum());
             buyButton3.insert(65, responderID);
             temp << buyButton1 << std::endl << buyButton2 << std::endl << buyButton3 << std::endl;
-            std::cout << headerStr << titleStr << priceStr << dueStr << locStr << descStr << userStr << bottomStr << backButton << std::endl;
+            std::cout << headerStr << titleStr << priceStr << dueStr << locStr << descStr << userStr << tRateStr << uRateStr << bottomStr << backButton << std::endl;
             success = true;
         }
     }
@@ -218,6 +234,11 @@ int main(void)
     else if(form.compare("Purchase") == 0)
     {
          purchase(formdata, tasks, users, transactions);
+    }
+    else if(form.compare("userProfile") == 0)
+    {
+        alert("UP");
+        viewUser(formdata, users);
     }
 
     if(form.compare("Search") != 0)

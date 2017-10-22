@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #include "transactions.hpp"
 #include <vector>
 #include <fstream>

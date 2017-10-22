@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #pragma once
 #include <string>
 #include <cgicc/CgiDefs.h>

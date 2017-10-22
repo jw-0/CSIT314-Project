@@ -1,15 +1,25 @@
+// Written by Jarod Wright
+
 #include "user.hpp"
 #include <fstream>
 #include <cgicc/HTMLClasses.h>
 #include "util.hpp"
 #include "debug.hpp"
 
+static std::string headerStr = "<table border=0 width=\"100%\"><tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr>\n";
+static std::string usernameStr = "<tr><td width=\"60%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Username: </b> </td></tr>\n";
+static std::string fnStr = "<td width=\"40%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>First Name: $</b> </td></tr>\n";
+static std::string lnStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;\"><b>Last Name: </b> </td></tr>\n";
+static std::string emailStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>E-Mail: </b> </td></tr>\n";
+static std::string phone = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Phone: #</b> </td></tr>\n";
+static std::string rating = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Rating: </b> </td></tr>\n";
+static std::string bottomStr = "<tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr></table>";
+static std::string backButton = "<button onclick=window.history.back()> Go Back </button>";
 
 User::User()
 {
     id = 0;
     rating = 0.0;
-    ratingCount = 0;
 }
 
 void User::createUser(cgicc::Cgicc formdata)
@@ -22,6 +32,36 @@ void User::createUser(cgicc::Cgicc formdata)
     password = getValue("password", formdata);
     ID += 1;
     id = ID;
+    rating = 5.0;
+}
+
+void viewUser(cgicc::Cgicc formdata, std::vector<User> users)
+{
+    std::string id = getValue("userID", formdata);
+    bool success = false;
+    for(auto iter = users.begin(); iter != users.end(); ++iter)
+    {
+        /* username 119
+        fname 118
+        lname 120
+        email 118
+        p 118
+        r 118
+        */
+        if(iter->getID() == std::stoi(id, nullptr, 0))
+        {
+            usernameStr.insert(119, iter->getUsername());
+            fnStr.insert(118, iter->getFirstName());
+            lnStr.insert(120, iter->getLastName());
+            emailStr.insert(118, iter->getEmail());
+            phone.insert(118, iter->getPhone());
+            rating.insert(118, std::to_string(iter->getRating()));
+            std::cout << headerStr << usernameStr << fnStr << lnStr << emailStr << phone << rating << bottomStr << backButton << std::endl;
+            success = true;
+        }
+    }
+    if(!success)
+        alert("Problem viewing user profile.");
 }
 
 void User::saveUser(const char *fileName)
@@ -55,13 +95,13 @@ bool operator==(const User &lhs, const User &rhs)
 
 std::istream &operator>>(std::istream &in, User &user)
 {
-    in >> user.id >> user.username >> user.firstName >> user.lastName >> user.email >> user.phone >> user.password;
+    in >> user.id >> user.username >> user.firstName >> user.lastName >> user.email >> user.phone >> user.password >> user.rating;
     return in;
 }
 
 std::ostream &operator<<(std::ostream &out, const User &user)
 {
-    out << user.id << "\t" << user.username << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password << std::endl;;
+    out << user.id << "\t" << user.username << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password << "\t"<< user.rating << std::endl;;
     return out;
 }
 

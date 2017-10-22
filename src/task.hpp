@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #pragma once
 
 static int ServiceNum = 0;
@@ -21,6 +22,7 @@ class Task
         std::string getImgLink()    { return imgLink; }
         std::string getDescription(){ return description; }
         std::string getOwnerID()    { return ownerID; }
+        float getRating()           { return rating; }
         bool isActive()             { return active; }
     private:
         std::string serviceNum;
@@ -32,6 +34,7 @@ class Task
         std::string description;
         std::string flagLevel;
         std::string ownerID;
+        float rating;
         bool active;
 };
 

@@ -1,3 +1,4 @@
+// Written by Jarod Wright
 #include "util.hpp"
 #include <iostream> 
 
