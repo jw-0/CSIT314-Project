@@ -5,3 +5,4 @@ set -x
 sudo service httpd stop
 cp $datadir/users.dat mockusers.txt
 cp $datadir/tasks.dat mocktasks.txt
+cp $datadir/trans.dat mocktransactions.txt

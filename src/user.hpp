@@ -23,6 +23,8 @@ class User
         std::string getLastName() { return lastName; }
         std::string getEmail() { return email; }
         std::string getPhone() { return phone; }
+        float getRating() { return rating; }
+        int getRatingCount() { return ratingCount; }
     private:
         long id;
         std::string username;
@@ -32,6 +34,7 @@ class User
         std::string phone;
         std::string password;
         float rating;
+        int ratingCount;
 };
 
 void loadUsers(std::vector<User> &, const char *);

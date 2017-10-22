@@ -4,8 +4,11 @@
 #include <cgicc/Cgicc.h>
 #include <cgicc/HTTPHTMLHeader.h>
 #include <cgicc/HTMLClasses.h>
+#include <cstdlib>
 #include "util.hpp"
 #include "task.hpp"
+#include "debug.hpp"
+
 
 void Task::createTask(cgicc::Cgicc formdata)
 {
@@ -18,6 +21,7 @@ void Task::createTask(cgicc::Cgicc formdata)
     serviceNum = std::to_string(ServiceNum);
     ownerID = getValue("userid", formdata);
     imgLink = "http://dummysite.com/img";
+    flagLevel = "1";
     active = true;
 }
 
@@ -34,7 +38,9 @@ void Task::saveTask(const char *fileName)
     if(out.is_open())
     {
         out << *this;
-        //std::cout << "<script> alert(\" Successfully wrote task!\"); </script>" << std::endl;
+        #ifdef DEBUG
+        std::cout << "<script> alert(\" Successfully wrote task!\"); </script>" << std::endl;
+        #endif
     }
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
@@ -44,7 +50,8 @@ void Task::saveTask(const char *fileName)
 std::istream &operator>>(std::istream &in, Task &task)
 {
     std::string boolVal;
-    in >> task.serviceNum >> task.title >> task.offerPrice >> task.deadline >> task.location >> task.imgLink >> task.description >> task.ownerID >> boolVal;
+    in >> task.serviceNum >> task.title >> task.offerPrice >> task.deadline >> task.location >> task.imgLink >> task.description >> task.flagLevel >> task.ownerID >> boolVal;
+    ServiceNum = std::stoi(task.serviceNum, nullptr, 0);
     if(boolVal.compare("true") == 0)
         task.active = true;
     else
@@ -54,8 +61,12 @@ std::istream &operator>>(std::istream &in, Task &task)
 
 std::ostream &operator<<(std::ostream &out, const Task &task)
 {
-    std::string boolVal = task.active == true ? "true" : "false";
-    out << task.serviceNum << "\t" << task.title << "\t" << task.offerPrice << "\t" << task.deadline << "\t" << task.location << "\t" << task.imgLink << "\t" << task.description << "\t" << task.ownerID << "\t" << boolVal << std::endl;
+    std::string boolVal;
+    if(task.active)
+        boolVal = "true";
+    else
+        boolVal = "false";
+    out << task.serviceNum << "\t" << task.title << "\t" << task.offerPrice << "\t" << task.deadline << "\t" << task.location << "\t" << task.imgLink << "\t" << task.description << "\t" << task.flagLevel << "\t" << task.ownerID << "\t" << boolVal << std::endl;
     return out;
 }
 
@@ -72,6 +83,33 @@ bool operator==(const Task &lhs, const Task &rhs)
     return false;
 }
 
+Task Task::operator=(const Task &rhs)
+{
+    serviceNum = rhs.serviceNum; 
+    title = rhs.title;
+    offerPrice = rhs.offerPrice;
+    deadline = rhs.deadline;
+    location = rhs.location;
+    description = rhs.description;
+    ownerID = rhs.ownerID;
+    return *this;
+}
+
+
+void saveTasks(std::vector<Task> tasks, const char *fileName)
+{
+    std::ofstream out;
+    out.open(fileName);
+    if(out.is_open())
+    {
+        for(auto iter = tasks.begin(); iter != tasks.end(); ++iter)
+        {
+            out << *iter;
+        }
+        out << std::endl;
+    }
+    out.close();
+}
 
 void loadTasks(std::vector<Task> &tasks, const char *fileName)
 {
@@ -85,7 +123,9 @@ void loadTasks(std::vector<Task> &tasks, const char *fileName)
             in >> task;
             tasks.push_back(task);
         }
-        //std::cout << "<script> alert(\"Successfully loaded tasks.dat!\"); </script>" << std::endl;
+        #ifdef DEBUG
+        std::cout << "<script> alert(\"Successfully loaded tasks.dat!\"); </script>" << std::endl;
+        #endif
         // sometimes we get duplicates, remove them
         if(tasks[tasks.size()-1] == tasks[tasks.size()-2])
             tasks.pop_back();

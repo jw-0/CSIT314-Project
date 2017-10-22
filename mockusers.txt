@@ -100,3 +100,4 @@
 100	mmcgeaney2r	Marlene	McGeaney	mmcgeaney2r@eepurl.com	926-730-5112	HOXIHa
 101	testuser	TestFirstName	TestLastName	test@fake.com	0101010340	password
 102	secondtest	Kewcvi	efszi	yu@fiac.com	020202	abc123
+103	demonstrationUser	Demo	Nstration	demo@fake.com	000	password

@@ -21,7 +21,7 @@
 21	Herzog-Jaskolski-and-Kub	99.55	31/10/2016	Asia/Chongqing	http://dummyimage.com/158x147.bmp/dddddd/000000	disintermediate	3	21	true
 22	Stracke-Maggio-and-Watsica	25.91	27/9/2017	Asia/Manila	http://dummyimage.com/135x183.png/cc0000/ffffff	throughput	1	22	true
 23	Erdman-Cronin-and-Sawayn	168.73	05/3/2017	America/Mexico_City	http://dummyimage.com/159x220.png/cc0000/ffffff	ability	3	23	false
-24	Bosco-Group	152.08	21/7/2017	Europe/Stockholm	http://dummyimage.com/127x250.png/dddddd/000000	Managed	2	24	
+24	Bosco-Group	152.08	21/7/2017	Europe/Stockholm	http://dummyimage.com/127x250.png/dddddd/000000	Managed	2	24	true
 25	Dicki-LLC	494.51	27-/1/2017	Europe/Moscow	http://dummyimage.com/155x168.jpg/cc0000/ffffff	coherent	3	25	false
 26	Considine-Hickle-and-Kuhic	213.4	29/10/2016	Europe/Paris	http://dummyimage.com/198x226.png/ff4444/ffffff	Horizontal	3	26	true
 27	O'Connell-Casper	74.06	03/12/2016	Pacific/Guam	http://dummyimage.com/155x177.bmp/5fa2dd/ffffff	artificial-intelligence	3	27	false
@@ -98,5 +98,4 @@
 98	Harber-Kerluke-and-Kuhlman	345.07	21/9/2017	America/Lima	http://dummyimage.com/227x233.bmp/cc0000/ffffff	Open-source	3	98	true
 99	Johns-LLC	175.6	23/7/2017	Asia/Chongqing	http://dummyimage.com/116x232.jpg/5fa2dd/ffffff	encompassing	3	99	true
 100	Wintheiser-Ledner-and-Wisoky	245.46	28/9/2017	Europe/Sarajevo	http://dummyimage.com/224x138.bmp/cc0000/ffffff	Monitored	2	100	true
-1	TaskTest	70	10/01/1980	Sydney	http://dummysite.com/img	fegsdg	23	true
-1	TaskFour	987.65	01/01/2018	Canberra	http://dummysite.com/img	ergfdg9	52	true
+101	dfgds9g	93149qefew9	294	ewr9vd	http://dummysite.com/img	9wgrew9g	1	52	true

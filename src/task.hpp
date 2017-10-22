@@ -11,9 +11,9 @@ class Task
         friend std::istream &operator>>(std::istream &, Task &);
         friend std::ostream &operator<<(std::ostream &, const Task &);
         friend bool operator==(const Task &lhs, const Task &rhs);
-
+        Task operator=(const Task &rhs);
         // simple getters
-        std::string getServiceNum()        { return serviceNum; }
+        std::string getServiceNum() { return serviceNum; }
         std::string getTitle()      { return title; }
         std::string getOfferPrice() { return offerPrice; }
         std::string getDeadline()   { return deadline; }
@@ -30,8 +30,10 @@ class Task
         std::string location;
         std::string imgLink;
         std::string description;
+        std::string flagLevel;
         std::string ownerID;
         bool active;
 };
 
+void saveTasks(std::vector<Task> tasks, const char *fileName);
 void loadTasks(std::vector<Task> &tasks, const char *fileName);

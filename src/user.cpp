@@ -2,12 +2,14 @@
 #include <fstream>
 #include <cgicc/HTMLClasses.h>
 #include "util.hpp"
+#include "debug.hpp"
 
 
 User::User()
 {
     id = 0;
     rating = 0.0;
+    ratingCount = 0;
 }
 
 void User::createUser(cgicc::Cgicc formdata)
@@ -29,7 +31,9 @@ void User::saveUser(const char *fileName)
     if(out.is_open())
     {
         out << *this;
-        //std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
+        #ifdef DEBUG
+        std::cout << "<script> alert(\" Successfully wrote user! \"); </script>" << std::endl;
+        #endif
     }
     else
         std::cout << "<script> alert(\"Cannot open " << fileName << "!\")</script>" << std::endl;
@@ -75,7 +79,9 @@ void loadUsers(std::vector<User> &users, const char *fileName)
             users.push_back(user);
             ID = user.getID();
         }
-        //std::cout << "<script> alert(\"Successfully loaded users.dat!\"); </script>" << std::endl;
+        #ifdef DEBUG
+        std::cout << "<script> alert(\"Successfully loaded users.dat!\"); </script>" << std::endl;
+        #endif
         // sometimes we get duplicates, remove them
         if(users[users.size()-1] == users[users.size()-2])
             users.pop_back();

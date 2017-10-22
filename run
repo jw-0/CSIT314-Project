@@ -5,6 +5,7 @@ datadir="/var/www/data"
 sudo cp src/csit314.cgi /var/www/cgi-bin/csit314.cgi
 sudo cp System/index.html /var/www/html/index.html
 sudo cp mockusers.txt $datadir/users.dat
+sudo cp mocktransactions.txt $datadir/trans.dat
 sudo cp mocktasks.txt $datadir/tasks.dat
 
 sudo service httpd start

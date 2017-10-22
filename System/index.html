@@ -119,8 +119,10 @@
 <button class="sidebar" onClick="showHome()">Home</button>
 <button class="sidebar" onClick="showLogin()">Login</button>
 <button class="sidebar" onClick="showFindTask()">Find Task</button>
+<button class="sidebar" onClick="showPurchaseTask()">Purchase Task</button>
 <button class="sidebar" onClick="showCreateTask()">Create Task</button>
 <button class="sidebar" onClick="showUserProfile()">User Profile</button>
+<button class="sidebar" onClick="showDeleteTask()"> Delete Task </button>
 <button class="sidebar" onClick="showAboutUs()">About Us</button>
 <button class="sidebar" onClick="logout()">Logout</button>
 </td><!-- end of the sidebar -->
@@ -200,35 +202,59 @@
 <!-- This block will appear when the Find Task button is clicked -->
 <div id="findTaskBlock" style="display: none;">
   <span style="padding: 0px 20px;"></span>
-  <form action="/cgi-bin/csit314.cgi" method="post">
-      <table border=0 width="100%">
-      <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-      <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Tasks</th></tr>
-      <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Keywords: &nbsp;</td>
-      <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
-      <input type="hidden" name="formType" value="Search">
-      <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
-      </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
-      </table>
-    </form>
-  <!-- table with search results -->
-<table border=0 width="100%">
-	<tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-  	<tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Title of Task</b></td>
-  	<td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 30px; font-size: 20px;"><b>Price: </b>$0.00</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 13px;"><b>Due: </b>(Enter Due Date Here)</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Address: </b>(Enter Address Here)</td></tr>
-  	<tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>(Enter Description Here)</td></tr>
-  	<tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-</table>
+  
+    <form action="/cgi-bin/csit314.cgi" method="post" onsubmit="return insertUserID('responderID')">
+        <table border=0 width="100%">
+        <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+        <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Tasks</th></tr>
+        <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Title: &nbsp;</td>
+        <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
+        <input type="hidden" name="formType" value="Search">
+        <input id="responderID" type="hidden"  name="responderID" value="">
+        <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
+        </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+        </table>
+      </form>
+</div>
 
+<div id="purchaseTaskBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+    <form action="/cgi-bin/csit314.cgi" method="post" onsubmit="return insertUserID('responderIDPurchase')">
+        <table border=0 width="100%">
+        <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+        <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter title of task to purchase: </th></tr>
+        <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Title: &nbsp;</td>
+        <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
+        <input type="hidden" name="formType" value="Purchase">
+        <input id="responderIDPurchase" type="hidden" name="responderIDPurchase" value="">
+        <td width="42px"><input type="submit" value="Purchase" class="searchbutton"></td>
+        </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+        </table>
+      </form>
+</div>
+
+<div id="deleteTaskBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  
+    <form action="/cgi-bin/csit314.cgi" method="post">
+        <table border=0 width="100%">
+        <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+        <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Delete Task</th></tr>
+        <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Title: &nbsp;</td>
+        <td style="padding: 15px 0px;"><input type="text" name="title" style="width:100%; "></td>
+        <input type="hidden" name="formType" value="delete">
+        <td width="42px"><input type="submit" value="Find" class="searchbutton"></td>
+        </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+        </table>
+      </form>
+  <!-- table with search results -->
 </div>
 
 <!-- This block contains the task creation form -->
 <!-- This block will appear when the Create Task button is clicked -->
 <div id="createTaskBlock" style="display: none;">
   <span style="padding: 0px 20px;"></span>
-  <form action="/cgi-bin/csit314.cgi" method="post">
+  <form action="/cgi-bin/csit314.cgi" method="post" onsubmit="return insertUserID('userid')">
   <table border=0 width="100%">
   <tr><th colspan=2 style="border-bottom: 1px solid;"/></tr>
   <tr><th colspan=2 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Enter Task Information</th></tr>
@@ -248,7 +274,7 @@
   <table border=0 width="100%" style="padding:10px 0px 0px 0px;">
   <tr><td width=80px style="text-align:left; font-family:Calibri; font-size: 14px;">Deadline:</td><td><input type="text" name="deadline" style="width:100%"></tr>
   <input type="hidden" name="formType" value="Create Task">
-  <input id="userid" type="hidden" name="userid" value="999">
+  <input id="userid" type="hidden" name="userid" value="">
   </table>
 	<input type="submit" value="Create Task" class="formbutton">
   <input type="reset" value="Clear Form" class="formbutton">
@@ -311,86 +337,146 @@ function getCookie(cname) {
 function showHome(){
   document.getElementById("homeBlock").style.display = "block";
   document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("purchaseTaskBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "none";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";
   document.getElementById("aboutUsBlock").style.display = "none";
+  document.getElementById("deleteTaskBlock").style.display = "none";
 }
+
 function showLogin(){
-  document.getElementById("homeBlock").style.display = "none";
-  document.getElementById("loginBlock").style.display = "block";
-  document.getElementById("findTaskBlock").style.display = "none";
-  document.getElementById("createTaskBlock").style.display = "none";
-  document.getElementById("userProfileBlock").style.display = "none";
-  document.getElementById("aboutUsBlock").style.display = "none";
+  var username = getCookie("username")
+  if(username == "")
+  {
+    document.getElementById("homeBlock").style.display = "none";
+    document.getElementById("loginBlock").style.display = "block";
+    document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findTaskBlock").style.display = "none";
+    document.getElementById("createTaskBlock").style.display = "none";
+    document.getElementById("userProfileBlock").style.display = "none";
+    document.getElementById("aboutUsBlock").style.display = "none";
+    document.getElementById("deleteTaskBlock").style.display = "none";
+  }
+  else
+    alert("You are already logged in as " + username);
 }
+
 function showFindTask(){
   document.getElementById("homeBlock").style.display = "none";
   document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("purchaseTaskBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "block";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";
   document.getElementById("aboutUsBlock").style.display = "none";
+  document.getElementById("deleteTaskBlock").style.display = "none";
 }
+
+function showPurchaseTask(){
+  var username = getCookie("username");
+  if(username != "")
+  {
+    document.getElementById("homeBlock").style.display = "none";
+    document.getElementById("loginBlock").style.display = "none";
+    document.getElementById("purchaseTaskBlock").style.display = "block";
+    document.getElementById("findTaskBlock").style.display = "none";
+    document.getElementById("createTaskBlock").style.display = "none";
+    document.getElementById("userProfileBlock").style.display = "none";
+    document.getElementById("aboutUsBlock").style.display = "none";
+    document.getElementById("deleteTaskBlock").style.display = "none";
+  }
+  else
+    alert("You must be logged in to purchase a task.");
+}
+
 function showCreateTask(){
   var username = getCookie("username");
   if(username != "")
   {
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "none";
+    document.getElementById("purchaseTaskBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "block";
+    document.getElementById("userProfileBlock").style.display = "none";
+    document.getElementById("aboutUsBlock").style.display = "none";
+    document.getElementById("deleteTaskBlock").style.display = "none";
+  }
+  else
+    alert("You must be logged in to create a task.");
+}
+
+function showDeleteTask(){
+  var username = getCookie("username");
+  if(username != "")
+  {
+    document.getElementById("homeBlock").style.display = "none";
+    document.getElementById("loginBlock").style.display = "none";
+    document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findTaskBlock").style.display = "none";
+    document.getElementById("createTaskBlock").style.display = "none";
+    document.getElementById("deleteTaskBlock").style.display = "block";
     document.getElementById("userProfileBlock").style.display = "none";
     document.getElementById("aboutUsBlock").style.display = "none";
     document.getElementById("userid").value = getCookie("userID");
   }
   else
-    alert("You must be logged in to create a task.");
+    alert("You must be logged in to delete your tasks.");
 }
+
 function showUserProfile(){
-  document.getElementById("homeBlock").style.display = "none";
-  document.getElementById("loginBlock").style.display = "none";
-  document.getElementById("findTaskBlock").style.display = "none";
-  document.getElementById("createTaskBlock").style.display = "none";
-  document.getElementById("userProfileBlock").style.display = "block";
-  document.getElementById("aboutUsBlock").style.display = "none";
+  var username = getCookie("username");
+  if(username != "")
+  {
+    document.getElementById("homeBlock").style.display = "none";
+    document.getElementById("loginBlock").style.display = "none";
+    document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findTaskBlock").style.display = "none";
+    document.getElementById("createTaskBlock").style.display = "none";
+    document.getElementById("userProfileBlock").style.display = "block";
+    document.getElementById("aboutUsBlock").style.display = "none";
+    document.getElementById("deleteTaskBlock").style.display = "none";
+  }
+  else
+    alert("You must be logged in to view your user profile.");
+
 }
 function showAboutUs(){
   document.getElementById("homeBlock").style.display = "none";
   document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("purchaseTaskBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "none";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";
   document.getElementById("aboutUsBlock").style.display = "block";
+  document.getElementById("deleteTaskBlock").style.display = "none";
 }
-/*
-function showUser(){
+
+function insertUserID(elementID)
+{
+  var cookie = getCookie("userID");
+  document.getElementById(elementID).value = cookie;
+  //alert(document.getElementById(elementID).value);
+}
+
+
+function showLoginInfo(){
   var username = getCookie("username");
-  var node = document.getElementById('username');
   if(username != "")
-    node.innerHTML("<p> Welcome back, " + username "</p>");
+  {
+    document.getElementById("loggedIn").innerHTML = "Logged in as ";
+    document.getElementById("LoginInfo").innerHTML = getCookie("username");
+  }
   else
-    node.innerHTML("<p> Not currently logged in </p>");
-}*/
-// username userID
+    document.getElementById("loggedIn").innerHTML = "Not currently logged in.";
+}
 
-
-  function showLoginInfo(){
-    var username = getCookie("username");
-    if(username != "")
-    {
-      document.getElementById("loggedIn").innerHTML = "Logged in as ";
-      document.getElementById("LoginInfo").innerHTML = getCookie("username");
-    }
-    else
-      document.getElementById("loggedIn").innerHTML = "Not currently logged in.";
-  }
-
-  function logout(){
-    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    location.reload();
-  }
+function logout(){
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  location.reload();
+}
 </script>
 
 </body>
