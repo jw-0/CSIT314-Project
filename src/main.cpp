@@ -62,13 +62,14 @@ std::string getUserByID(long id, std::vector<User> users)
 void deleteTask(cgicc::Cgicc formdata, std::vector<Task> &tasks, std::vector<User> users)
 {
     std::string title = getValue("title", formdata);
+    std::string responderID = getValue("responderIDDelete", formdata);
     std::ofstream temp;
     temp.open(tempFile, std::ofstream::out | std::ofstream::trunc);
     bool success = false;
     for(auto iter = tasks.begin(); iter != tasks.end(); ++iter)
     {
         temp << iter->getTitle() << "\t" << title << std::endl;
-        if(iter->getTitle() == title)
+        if(iter->getTitle() == title && iter->getOwnerID() == responderID)
         {
             if(iter == tasks.end())
             {
@@ -81,11 +82,9 @@ void deleteTask(cgicc::Cgicc formdata, std::vector<Task> &tasks, std::vector<Use
             success = true;
             break;
         }
-        else if(iter->getTitle() == "")
-            tasks.erase(iter);
     }
     if(!success)
-        alert("Could not delete task.");
+        alert("Could not delete task. Double check that you own that task.");
     saveTasks(tasks, tasksDat);
     temp.close();
 }
