@@ -76,7 +76,7 @@ void deleteTask(cgicc::Cgicc formdata, std::vector<Task> &tasks, std::vector<Use
                 tasks.pop_back();
             }
             else
-                tasks.erase(iter);
+                iter = tasks.erase(iter);
             alert("Successfully deleted task");
             success = true;
             break;
@@ -86,7 +86,7 @@ void deleteTask(cgicc::Cgicc formdata, std::vector<Task> &tasks, std::vector<Use
     }
     if(!success)
         alert("Could not delete task.");
-    //saveTasks(tasks, tasksDat);
+    saveTasks(tasks, tasksDat);
     temp.close();
 }
 
@@ -215,8 +215,6 @@ int main(void)
     else if(form.compare("delete") == 0)
     {
         deleteTask(formdata, tasks, users);
-        alert("Going back!");
-        goBack();
     }
     else if(form.compare("Purchase") == 0)
     {
