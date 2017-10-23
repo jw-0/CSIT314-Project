@@ -118,8 +118,9 @@
 <td width="170px" style="vertical-align: text-top;  text-align: center; border-right: 2px solid;">
 <img src="https://image.ibb.co/mXq4dw/T1.png" alt="T1" border="0">
 <button class="sidebar" onClick="showHome()">Home</button>
-<button class="sidebar" onClick="showLogin()">Login</button>
+<button class="sidebar" onClick="showLogin()">Login/Register</button>
 <button class="sidebar" onClick="showFindTask()">Find Task</button>
+<button class="sidebar" onClick="showFindUser()"> Find User</button>
 <button class="sidebar" onClick="showPurchaseTask()">Purchase Task</button>
 <button class="sidebar" onClick="showCreateTask()">Create Task</button>
 <button class="sidebar" onClick="showUserProfile()">User Profile</button>
@@ -140,8 +141,29 @@
   <span style="padding: 0px 20px;"></span>
   <table border=0 width="100%">
   <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
-  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Featured Tasks</th></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 30px;"> Featured Tasks</th></tr>
   </table>
+  <table border=0 width="100%"><tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 20px;"><b>Title: </b>Yost-Barton </td></tr>
+  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Price: $</b>494.92 </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;"><b>Due: </b>22/12/2016 </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Location: </b>Asia/Tokyo </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>analyzing </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Offering User: </b>zaslum1 </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Task Rating: </b> 2.620000</td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>User Rating: </b> 2.620000</td></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr></table>
+  <table border=0 width="100%"><tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+  <tr><td width="60%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 20px;"><b>Title: </b>O'Keefe-Lubowitz </td></tr>
+  <td width="40%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Price: $</b>219.73 </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;"><b>Due: </b>29/3/2017 </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Location: </b>Asia/Jakarta </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Description: </b>Reactive </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Offering User: </b>ameegin2k </td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>Task Rating: </b> 0.737000</td></tr>
+  <tr><td width="100%" style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;"><b>User Rating: </b> 1.750000</td></tr>
+  <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr></table>
+
   
   <!-- table with featured services -->
   
@@ -201,6 +223,22 @@
 
 <!-- This block contains the task searching and browsing -->
 <!-- This block will appear when the Find Task button is clicked -->
+<div id="findUserBlock" style="display: none;">
+  <span style="padding: 0px 20px;"></span>
+  
+    <form action="/cgi-bin/csit314.cgi" method="post">
+        <table border=0 width="100%">
+        <tr><th colspan=3 style="border-bottom: 1px solid;"/></tr>
+        <tr><th colspan=3 style="border-bottom: 1px solid #ddd; text-align:left; font-family:Calibri; padding: 20px 0px 10px 0px; font-size: 18px;">Search Users</th></tr>
+        <tr><td width=80px style="text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;">Username: &nbsp;</td>
+        <td style="padding: 15px 0px;"><input type="text" name="username" style="width:100%; "></td>
+        <input type="hidden" name="formType" value="searchUser">
+        <td width="42px"><input type="submit" value="Search" class="searchbutton"></td>
+        </tr><tr><th colspan=3 style="border-bottom: 1px solid #ddd;"/></tr>
+        </table>
+      </form>
+</div>
+
 <div id="findTaskBlock" style="display: none;">
   <span style="padding: 0px 20px;"></span>
   
@@ -295,7 +333,7 @@
   </table>
   <table border=0 width="100%">
     <form action="/cgi-bin/csit314.cgi" method="post" onsubmit="return insertUserID('userID')">
-       <input type="hidden" name="userProfile" value="userProfile">
+       <input type="hidden" name="formType" value="userProfile">
       <input id="userID" type="hidden" name="userID" value="">
       <input type="submit" value="View Profile" class="formbutton">
     </form>
@@ -345,6 +383,7 @@ function showHome(){
   document.getElementById("homeBlock").style.display = "block";
   document.getElementById("loginBlock").style.display = "none";
   document.getElementById("purchaseTaskBlock").style.display = "none";
+  document.getElementById("findUserBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "none";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";
@@ -359,6 +398,7 @@ function showLogin(){
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "block";
     document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findUserBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "none";
     document.getElementById("userProfileBlock").style.display = "none";
@@ -373,6 +413,7 @@ function showFindTask(){
   document.getElementById("homeBlock").style.display = "none";
   document.getElementById("loginBlock").style.display = "none";
   document.getElementById("purchaseTaskBlock").style.display = "none";
+  document.getElementById("findUserBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "block";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";
@@ -387,6 +428,7 @@ function showPurchaseTask(){
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "none";
     document.getElementById("purchaseTaskBlock").style.display = "block";
+    document.getElementById("findUserBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "none";
     document.getElementById("userProfileBlock").style.display = "none";
@@ -397,6 +439,19 @@ function showPurchaseTask(){
     alert("You must be logged in to purchase a task.");
 }
 
+function showFindUser(){
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("loginBlock").style.display = "none";
+  document.getElementById("purchaseTaskBlock").style.display = "none";
+  document.getElementById("findUserBlock").style.display = "block";
+  document.getElementById("findTaskBlock").style.display = "none";
+  document.getElementById("createTaskBlock").style.display = "none";
+  document.getElementById("userProfileBlock").style.display = "none";
+  document.getElementById("aboutUsBlock").style.display = "none";
+  document.getElementById("deleteTaskBlock").style.display = "none";
+}
+
+
 function showCreateTask(){
   var username = getCookie("username");
   if(username != "")
@@ -404,6 +459,7 @@ function showCreateTask(){
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "none";
     document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findUserBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "block";
     document.getElementById("userProfileBlock").style.display = "none";
@@ -421,6 +477,7 @@ function showDeleteTask(){
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "none";
     document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findUserBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "none";
     document.getElementById("deleteTaskBlock").style.display = "block";
@@ -439,6 +496,7 @@ function showUserProfile(){
     document.getElementById("homeBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "none";
     document.getElementById("purchaseTaskBlock").style.display = "none";
+    document.getElementById("findUserBlock").style.display = "none";
     document.getElementById("findTaskBlock").style.display = "none";
     document.getElementById("createTaskBlock").style.display = "none";
     document.getElementById("userProfileBlock").style.display = "block";
@@ -453,6 +511,7 @@ function showAboutUs(){
   document.getElementById("homeBlock").style.display = "none";
   document.getElementById("loginBlock").style.display = "none";
   document.getElementById("purchaseTaskBlock").style.display = "none";
+  document.getElementById("findUserBlock").style.display = "none";
   document.getElementById("findTaskBlock").style.display = "none";
   document.getElementById("createTaskBlock").style.display = "none";
   document.getElementById("userProfileBlock").style.display = "none";

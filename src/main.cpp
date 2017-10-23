@@ -29,12 +29,16 @@ static std::string descStr = "<tr><td width=\"100%\" style=\"text-align:left; fo
 static std::string userStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Offering User: </b> </td></tr>\n";
 static std::string tRateStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Task Rating: </b> </td></tr>\n";
 static std::string uRateStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>User Rating: </b> </td></tr>\n";
+
 static std::string bottomStr = "<tr><th colspan=3 style=\"border-bottom: 1px solid;\"/></tr></table>";
 static std::string backButton = "<button onclick=window.history.back()> Go Back </button>";
-static std::string buyButton1 = "<form action=\"/cgi-bin/csit314.cgi\" method=\"post\"><input id=\"purchase\" type=\"hidden\" name=\"purchase\" value=\"purchase\"><input id=\"offererID\" type=\"hidden\" name=\"offererID\" value=\"\">";
-static std::string buyButton2 = "<input id=\"serviceNum\" type=\"hidden\" name=\"serviceNum\" value=\"\">";
-static std::string buyButton3 = "<input id=\"responderID\" type=\"hidden\" name =\"responderID\" value=\"\"><input type=\"submit\" value=\"Purchase\"></form>";
 
+static std::string usernameStr = "<tr><td width=\"60%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Username: </b> </td></tr>\n";
+static std::string fnStr = "<td width=\"40%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>First Name: </b> </td></tr>\n";
+static std::string lnStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 5px 0px; font-size: 16px;\"><b>Last Name: </b> </td></tr>\n";
+static std::string emailStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>E-Mail: </b> </td></tr>\n";
+static std::string phone = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Phone: #</b> </td></tr>\n";
+static std::string rating = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Rating: </b> </td></tr>\n";
 void goBack()
 {
     std::cout << "<script>  window.history.back();  </script>" << std::endl;
@@ -107,8 +111,8 @@ void purchase(cgicc::Cgicc formdata, std::vector<Task> tasks, std::vector<User> 
 {
     std::string title = getValue("title", formdata);
     std::string responderID = getValue("responderIDPurchase", formdata);
-    alert(getValue("responderIDPurchase", formdata));
-    alert(responderID);
+    //alert(getValue("responderIDPurchase", formdata));
+    //alert(responderID);
     Transaction transaction;
     bool success = false;
     for(auto iter = tasks.begin(); iter != tasks.end(); ++iter)
@@ -122,13 +126,64 @@ void purchase(cgicc::Cgicc formdata, std::vector<Task> tasks, std::vector<User> 
             transaction.saveTransaction(transDat);
             transactions.push_back(transaction);
             success = true;
-            alert("Successfully purchased!");
+            std::string msg = "Successfully purchased! Price: $";
+            msg.append(iter->getOfferPrice());
+            alert(msg);
             break;
         }
     }
     if(!success)
         alert("Could not find that service. Transaction not processed.");
 
+}
+
+void drawUser(auto iter)
+{
+    usernameStr.insert(119, iter->getUsername());
+    fnStr.insert(117, iter->getFirstName());
+    lnStr.insert(120, iter->getLastName());
+    emailStr.insert(118, iter->getEmail());
+    phone.insert(118, iter->getPhone());
+    rating.insert(118, std::to_string(iter->getRating()));
+    std::cout << headerStr << usernameStr << fnStr << lnStr << emailStr << phone << rating << bottomStr << backButton << std::endl;
+}
+
+void searchUser(cgicc::Cgicc formdata, std::vector<User> users)
+{
+    std::string username = getValue("username", formdata);
+    int length = 0;
+    bool success = false;
+    std::ofstream temp;
+    temp.open(tempFile);
+    for(auto iter = users.begin(); iter != users.end(); ++iter)
+    {
+        if(iter->getUsername() == username)
+        {
+            drawUser(iter);
+            success = true;
+        }
+    }
+    if(!success)
+    {
+        alert("Couldn't find user.");
+    }
+}
+
+
+void viewUser(cgicc::Cgicc formdata, std::vector<User> users)
+{
+    std::string id = getValue("userID", formdata);
+    bool success = false;
+    for(auto iter = users.begin(); iter != users.end(); ++iter)
+    {
+        if(iter->getID() == std::stoi(id, nullptr, 0))
+        {
+            drawUser(iter);
+            success = true;
+        }
+    }
+    if(!success)
+        alert("Problem viewing user profile.");
 }
 
 void search(cgicc::Cgicc formdata, std::vector<Task> tasks, std::vector<User> users)
@@ -151,10 +206,7 @@ void search(cgicc::Cgicc formdata, std::vector<Task> tasks, std::vector<User> us
             userStr.insert(125, getUserByID(std::stoi(iter->getOwnerID(), nullptr, 0), users));
             tRateStr.insert(124, std::to_string(iter->getRating()));
             uRateStr.insert(124, std::to_string(getUserRatingByID(std::stoi(iter->getOwnerID(), nullptr, 0), users)));
-            buyButton1.insert(178, iter->getOwnerID());
-            buyButton2.insert(62, iter->getServiceNum());
-            buyButton3.insert(65, responderID);
-            temp << buyButton1 << std::endl << buyButton2 << std::endl << buyButton3 << std::endl;
+            temp << headerStr << titleStr << priceStr << dueStr << locStr << descStr << userStr << tRateStr << uRateStr << bottomStr << backButton << std::endl;
             std::cout << headerStr << titleStr << priceStr << dueStr << locStr << descStr << userStr << tRateStr << uRateStr << bottomStr << backButton << std::endl;
             success = true;
         }
@@ -227,6 +279,10 @@ int main(void)
     {
         search(formdata, tasks, users);
     }
+    else if(form.compare("searchUser") == 0)
+    {
+        searchUser(formdata, users);
+    }
     else if(form.compare("delete") == 0)
     {
         deleteTask(formdata, tasks, users);
@@ -237,11 +293,10 @@ int main(void)
     }
     else if(form.compare("userProfile") == 0)
     {
-        alert("UP");
+        //alert("UP");
         viewUser(formdata, users);
     }
-
-    if(form.compare("Search") != 0)
+    if(form.compare("Search") != 0 && form.compare("userProfile") != 0 && form.compare("searchUser") != 0)
         goBack();
     return 0;
 }

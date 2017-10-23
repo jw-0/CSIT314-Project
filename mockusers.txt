@@ -102,3 +102,5 @@
 102 secondtest  Kewcvi  efszi   yu@fiac.com 020202  abc123 0.845
 103 demonstrationUser   Demo    Nstration   demo@fake.com   000 password 2.96
 104	PresentationUser	Pres	Entation	presso@fake.com	000	password123	5
+105	anotherTest	Test	User	test@example.com	12345678	password	5
+106	fake	fake	user	fake@fake.com	12345678	123	5
