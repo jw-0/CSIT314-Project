@@ -10,7 +10,6 @@
 #include "task.hpp"
 #include "debug.hpp"
 
-
 void Task::createTask(cgicc::Cgicc formdata)
 {
     title = getValue("title", formdata);
@@ -98,7 +97,6 @@ Task Task::operator=(const Task &rhs)
     rating = rhs.rating;
     return *this;
 }
-
 
 void saveTasks(std::vector<Task> tasks, const char *fileName)
 {

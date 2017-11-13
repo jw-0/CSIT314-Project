@@ -1,6 +1,7 @@
 // Written by Jarod Wright
 #include <iostream>
 #include <vector>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <cstdlib>
@@ -39,6 +40,7 @@ static std::string lnStr = "<tr><td width=\"100%\" style=\"text-align:left; font
 static std::string emailStr = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>E-Mail: </b> </td></tr>\n";
 static std::string phone = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Phone: #</b> </td></tr>\n";
 static std::string rating = "<tr><td width=\"100%\" style=\"text-align:left; font-family:Calibri; padding: 15px 0px; font-size: 16px;\"><b>Rating: </b> </td></tr>\n";
+
 void goBack()
 {
     std::cout << "<script>  window.history.back();  </script>" << std::endl;
@@ -242,7 +244,6 @@ void login(cgicc::Cgicc formdata, std::vector<User> &users)
     }
     if(!success)
         std::cout << "<script> alert(\"Failed to login. Check your credentials and try again\");</script>"<<std::endl;
-
 }
 
 int main(void)
@@ -293,7 +294,6 @@ int main(void)
     }
     else if(form.compare("userProfile") == 0)
     {
-        //alert("UP");
         viewUser(formdata, users);
     }
     if(form.compare("Search") != 0 && form.compare("userProfile") != 0 && form.compare("searchUser") != 0)

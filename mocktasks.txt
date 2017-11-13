@@ -85,7 +85,7 @@
 89	Heidenreich-LLC	467.65	02/5/2017	America/Sao_Paulo	http://dummyimage.com/213x101.png/5fa2dd/ffffff	Multi-channelled	2	89	false	3.32
 90	Johnston-Hodkiewicz-and-Reilly	201.24	28/2/2017	Europe/Athens	http://dummyimage.com/142x157.png/dddddd/000000	intermediate	3	90	true	0.498
 91	Kilback-Ullrich	225.33	18/3/2017	Asia/Chongqing	http://dummyimage.com/204x141.png/5fa2dd/ffffff	Universal	2	91	false	2.27
-93	O'Keefe-Lubowitz	219.73	29/3/2017	Asia/Jakarta	http://dummyimage.com/218x103.bmp/dddddd/000000	Reactive	3	93	true	0.737
+93	O'Keefe-Lubowitz	219.73	29/11/2017	Asia/Jakarta	http://dummyimage.com/218x103.bmp/dddddd/000000	Reactive	3	93	true	0.737
 94	Altenwerth-Bernhard-and-Rice	445.04	21/10/2016	Europe/Tirane	http://dummyimage.com/238x130.bmp/ff4444/ffffff	homogeneous	2	94	true	0.708
 95	Glover-Treutel-and-Mertz	64.64	28/11/2016	Asia/Makassar	http://dummyimage.com/241x168.png/dddddd/000000	Switchable	2	95	true	1.75
 96	Cruickshank-Inc	50.95	13/11/2016	Asia/Kathmandu	http://dummyimage.com/227x145.png/ff4444/ffffff	analyzer	3	96	false	1.44
@@ -93,4 +93,3 @@
 98	Harber-Kerluke-and-Kuhlman	345.07	21/9/2017	America/Lima	http://dummyimage.com/166x249.jpg/cc0000/ffffff	Open-source	2	98	false	2
 99	Johns-LLC	175.6	23/7/2017	Asia/Chongqing	http://dummyimage.com/206x124.png/cc0000/ffffff	encompassing	3	99	true	2.36
 100	Wintheiser-Ledner-and-Wisoky	245.46	28/9/2017	Europe/Sarajevo	http://dummyimage.com/133x205.png/ff4444/ffffff	Monitored	3	100	false	1.06
-

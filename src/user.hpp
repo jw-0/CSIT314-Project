@@ -1,5 +1,4 @@
 // Written by Jarod Wright
-
 #pragma once
 #include <cgicc/Cgicc.h>
 #include <string>

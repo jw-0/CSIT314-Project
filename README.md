@@ -15,14 +15,8 @@ Build Instructions:
 
         httpd should be installed by default on your system
         If not look up your OS's instructions for installing
-        apache2
+        and running apache2
 
-        zlib
-            Fedora:
-            $ sudo dnf install zlib-devel
-
-            apt based systems:
-            $ sudo apt-get install zlib1g-dev
 
 To Run:
     

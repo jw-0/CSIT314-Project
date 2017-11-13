@@ -30,8 +30,6 @@ void User::createUser(cgicc::Cgicc formdata)
     rating = 5.0;
 }
 
-
-
 void User::saveUser(const char *fileName)
 {
     std::ofstream out;
@@ -72,7 +70,6 @@ std::ostream &operator<<(std::ostream &out, const User &user)
     out << user.id << "\t" << user.username << "\t" <<  user.firstName << "\t" << user.lastName << "\t" << user.email << "\t" << user.phone << "\t" << user.password << "\t"<< user.rating << std::endl;;
     return out;
 }
-
 
 void loadUsers(std::vector<User> &users, const char *fileName)
 {
